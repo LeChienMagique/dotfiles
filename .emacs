@@ -10,13 +10,14 @@
 (load "~/.emacs.rc/autocommit-rc.el")
 
 ;;; Appearance
-(defun rc/get-default-font ()
-  (cond
-   ((eq system-type 'windows-nt) "Consolas")
-   ((eq system-type 'gnu/linux) "Consolas")))
+;; (defun rc/get-default-font ()
+;;   (cond
+;;    ((eq system-type 'windows-nt) "Consolas")
+;;    ((eq system-type 'gnu/linux) "iosevka-14")))
 
-(add-to-list 'default-frame-alist `(font . ,(rc/get-default-font)))
-(set-face-attribute 'default nil :font "iosevka-20" :height 160)
+;; (add-to-list 'default-frame-alist `(font . ,(rc/get-default-font)))
+;; (set-face-attribute 'default nil :font "iosevka-14" :height 160)
+(set-face-attribute 'default nil :font "JetBrains Mono" :height 140)
 ;; (set-face-attribute 'default nil :font "DejaVuSansMono" :height 160)
 
 (tool-bar-mode 0)
@@ -63,7 +64,8 @@
 
 (add-hook 'c-mode-hook (lambda ()
                          (interactive)
-                         (c-toggle-comment-style -1)))
+                         (c-toggle-comment-style -1)
+                         (local-set-key (kbd "C-m"))))
 
 ;;; Paredit
 (rc/require 'paredit)
@@ -291,10 +293,10 @@
 (load "~/.emacs.shadow/shadow-rc.el" t)
 
 (add-to-list 'load-path "~/.emacs.local/")
-(require 'basm-mode)
-(require 'porth-mode)
-(require 'noq-mode)
-(require 'jai-mode)
+;; (require 'basm-mode)
+;; (require 'porth-mode)
+;; (require 'noq-mode)
+;; (require 'jai-mode)
 
 ;; (require 'simpc-mode)
 ;; (add-to-list 'auto-mode-alist '("\\.[hc]\\(pp\\)?\\'" . simpc-mode))
@@ -331,8 +333,80 @@ compilation-error-regexp-alist-alist
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(TeX-command-list
+   '(("TeX" "%(PDF)%(tex) %(file-line-error) %`%(extraopts) %S%(PDFout)%(mode)%' %(output-dir) %t" TeX-run-TeX nil
+      (plain-tex-mode texinfo-mode ams-tex-mode)
+      :help "Run plain TeX")
+     ("LaTeX" "%`%l%(mode)%' %T" TeX-run-TeX nil
+      (latex-mode doctex-mode)
+      :help "Run LaTeX")
+     ("Makeinfo" "makeinfo %(extraopts) %(o-dir) %t" TeX-run-compile nil
+      (texinfo-mode)
+      :help "Run Makeinfo with Info output")
+     ("Makeinfo HTML" "makeinfo %(extraopts) %(o-dir) --html %t" TeX-run-compile nil
+      (texinfo-mode)
+      :help "Run Makeinfo with HTML output")
+     ("AmSTeX" "amstex %(PDFout) %`%(extraopts) %S%(mode)%' %(output-dir) %t" TeX-run-TeX nil
+      (ams-tex-mode)
+      :help "Run AMSTeX")
+     ("ConTeXt" "%(cntxcom) --once --texutil %(extraopts) %(execopts)%t" TeX-run-TeX nil
+      (context-mode)
+      :help "Run ConTeXt once")
+     ("ConTeXt Full" "%(cntxcom) %(extraopts) %(execopts)%t" TeX-run-TeX nil
+      (context-mode)
+      :help "Run ConTeXt until completion")
+     ("BibTeX" "%(bibtex) %s" TeX-run-BibTeX nil
+      (plain-tex-mode latex-mode doctex-mode context-mode texinfo-mode ams-tex-mode)
+      :help "Run BibTeX")
+     ("Biber" "biber %(output-dir) %s" TeX-run-Biber nil
+      (plain-tex-mode latex-mode doctex-mode texinfo-mode ams-tex-mode)
+      :help "Run Biber")
+     ("Texindex" "texindex %s.??" TeX-run-command nil
+      (texinfo-mode)
+      :help "Run Texindex")
+     ("Texi2dvi" "%(PDF)texi2dvi %t" TeX-run-command nil
+      (texinfo-mode)
+      :help "Run Texi2dvi or Texi2pdf")
+     ("View" "%V" TeX-run-discard-or-function t t :help "Run Viewer")
+     ("Print" "%p" TeX-run-command t t :help "Print the file")
+     ("Queue" "%q" TeX-run-background nil t :help "View the printer queue" :visible TeX-queue-command)
+     ("File" "%(o?)dvips %d -o %f " TeX-run-dvips t
+      (plain-tex-mode latex-mode doctex-mode texinfo-mode ams-tex-mode)
+      :help "Generate PostScript file")
+     ("Dvips" "%(o?)dvips %d -o %f " TeX-run-dvips nil
+      (plain-tex-mode latex-mode doctex-mode texinfo-mode ams-tex-mode)
+      :help "Convert DVI file to PostScript")
+     ("Dvipdfmx" "dvipdfmx -o %(O?pdf) %d" TeX-run-dvipdfmx nil
+      (plain-tex-mode latex-mode doctex-mode texinfo-mode ams-tex-mode)
+      :help "Convert DVI file to PDF with dvipdfmx")
+     ("Ps2pdf" "ps2pdf %f %(O?pdf)" TeX-run-ps2pdf nil
+      (plain-tex-mode latex-mode doctex-mode texinfo-mode ams-tex-mode)
+      :help "Convert PostScript file to PDF")
+     ("Glossaries" "makeglossaries %(d-dir) %s" TeX-run-command nil
+      (plain-tex-mode latex-mode doctex-mode texinfo-mode ams-tex-mode)
+      :help "Run makeglossaries to create glossary file")
+     ("Index" "%(makeindex) %s" TeX-run-index nil
+      (plain-tex-mode latex-mode doctex-mode texinfo-mode ams-tex-mode)
+      :help "Run makeindex to create index file")
+     ("upMendex" "upmendex %(O?idx)" TeX-run-index t
+      (plain-tex-mode latex-mode doctex-mode texinfo-mode ams-tex-mode)
+      :help "Run upmendex to create index file")
+     ("Xindy" "texindy %s" TeX-run-command nil
+      (plain-tex-mode latex-mode doctex-mode texinfo-mode ams-tex-mode)
+      :help "Run xindy to create index file")
+     ("Check" "lacheck %s" TeX-run-compile nil
+      (latex-mode)
+      :help "Check LaTeX file for correctness")
+     ("ChkTeX" "chktex -v6 %s" TeX-run-compile nil
+      (latex-mode)
+      :help "Check LaTeX file for common mistakes")
+     ("Spell" "(TeX-ispell-document \"\")" TeX-run-function nil t :help "Spell-check the document")
+     ("Clean" "TeX-clean" TeX-run-function nil t :help "Delete generated intermediate files")
+     ("Clean All" "(TeX-clean t)" TeX-run-function nil t :help "Delete generated intermediate and output files")
+     ("Other" "" TeX-run-command t t :help "Run an arbitrary command")))
  '(browse-url-browser-function 'browse-url-generic)
  '(display-line-numbers-type 'relative)
+ '(electric-pair-mode t)
  '(ispell-dictionary nil)
  '(org-agenda-dim-blocked-tasks nil)
  '(org-agenda-exporter-settings '((org-agenda-tag-filter-preset (list "+personal"))))
@@ -342,12 +416,15 @@ compilation-error-regexp-alist-alist
    '(org-bbdb org-bibtex org-docview org-gnus org-habit org-info org-irc org-mhe org-rmail org-w3m))
  '(org-refile-use-outline-path 'file)
  '(package-selected-packages
-   '(auctex exec-path-from-shell astyle jupyter rainbow-mode proof-general elpy hindent ag qml-mode racket-mode php-mode go-mode kotlin-mode nginx-mode toml-mode love-minor-mode dockerfile-mode nix-mode purescript-mode markdown-mode jinja2-mode nim-mode csharp-mode rust-mode cmake-mode clojure-mode graphviz-dot-mode lua-mode tuareg glsl-mode yaml-mode d-mode scala-mode move-text nasm-mode editorconfig tide company powershell js2-mode yasnippet helm-ls-git helm-git-grep helm-cmd-t helm multiple-cursors magit haskell-mode paredit ido-completing-read+ smex gruber-darker-theme org-cliplink dash-functional dash))
+   '(slime helm-descbinds helm-descbindings lsp-ui lsp-mode mini-frame powerline auctex exec-path-from-shell astyle jupyter rainbow-mode proof-general hindent ag qml-mode racket-mode php-mode go-mode kotlin-mode nginx-mode toml-mode love-minor-mode dockerfile-mode nix-mode purescript-mode markdown-mode jinja2-mode nim-mode csharp-mode rust-mode cmake-mode clojure-mode graphviz-dot-mode lua-mode tuareg glsl-mode yaml-mode d-mode scala-mode move-text nasm-mode editorconfig tide powershell js2-mode yasnippet helm-ls-git helm-git-grep helm-cmd-t helm multiple-cursors magit haskell-mode paredit ido-completing-read+ smex gruber-darker-theme org-cliplink dash-functional dash))
  '(safe-local-variable-values
    '((eval progn
            (auto-revert-mode 1)
            (rc/autopull-changes)
            (add-hook 'after-save-hook 'rc/autocommit-changes nil 'make-it-local))))
+ '(tex-start-options "--shell-escape")
+ '(warning-suppress-log-types '((comp)))
+ '(warning-suppress-types '((comp)))
  '(whitespace-style
    '(face tabs spaces trailing space-before-tab newline indentation empty space-after-tab space-mark tab-mark)))
 (custom-set-faces
@@ -387,10 +464,10 @@ compilation-error-regexp-alist-alist
 ;; like wtf i dont want to freeze my emacs
 (global-unset-key (kbd "C-z"))
 
-(use-package astyle
-  :ensure t
-  :when (executable-find "astyle")
-  :hook (c-mode-common . astyle-on-save-mode))
+;; (use-package astyle
+;;   :ensure t
+;;   :when (executable-find "astyle")
+;;   :hook (c-mode-common . astyle-on-save-mode))
 (put 'narrow-to-region 'disabled nil)
 
 (setq TeX-output-view-style '("^pdf$" "." "SumatraPDF.exe %o"))
@@ -398,6 +475,7 @@ compilation-error-regexp-alist-alist
 (setq TeX-view-program-list
       '(("SumatraPDF" "SumatraPDF.exe %o")
         ))
+
 (cond
  ((eq system-type 'windows-nt)
   (add-hook 'LaTeX-mode-hook
@@ -410,3 +488,80 @@ compilation-error-regexp-alist-alist
             (lambda ()
               (setq TeX-view-program-selection '((output-pdf "Okular")
                                                  (output-dvi "Okular")))))))
+
+(defun TeX-command-toggle-shell-escape ()
+  "toggles the option --shell-escape from the tex command"
+  (interactive)
+  (setq TeX-command-extra-options
+        (cond ((string-match-p "\\_<--shell-escape\\_>" TeX-command-extra-options )
+               (replace-regexp-in-string "\\_<--shell-escape\\_>" "" TeX-command-extra-options))
+              ((string-empty-p TeX-command-extra-options)"--shell-escape")
+              (t(format "--shell-escape %s" TeX-command-extra-options))))
+  (message "TeX-command-extra-options : `%s'" TeX-command-extra-options))
+
+
+;; (bind-key "C-c C-t C-X" #'TeX-command-toggle-shell-escape  LaTeX-mode-map)
+
+(setq company-minimum-prefix-length 3)
+
+(setq display-line-numbers 'relative)
+
+(rc/require 'clang-format)
+(use-package clang-format)
+(global-set-key (kbd "C-M-l") 'clang-format-buffer)
+
+(require 'powerline)
+(powerline-center-theme)
+
+;; (use-package undo-tree)
+;; (global-undo-tree-mode)
+
+(rc/require 'ivy)
+(ivy-mode 1)
+
+(use-package mini-frame)
+(mini-frame-mode 1)
+
+(rc/require 'helm-descbinds)
+
+(global-unset-key (kbd "C-x C-l"))
+(rc/require 'slime)
+(setq inferior-lisp-program "sbcl")
+
+(load "~/.emacs.rc/gendoxy.el")
+
+(defun create-tags (dir-name)
+  "Create tags file."
+  (interactive "DDirectory: ")
+  (eshell-command 
+   (format "find %s -type f -name \"*.[ch]\" | etags -" dir-name)))
+ 
+ ;;;  Jonas.Jarnestrom<at>ki.ericsson.se A smarter               
+  ;;;  find-tag that automagically reruns etags when it cant find a               
+  ;;;  requested item and then makes a new try to locate it.                      
+  ;;;  Fri Mar 15 09:52:14 2002    
+(defadvice find-tag (around refresh-etags activate)
+  "Rerun etags and reload tags if tag not found and redo find-tag.              
+   If buffer is modified, ask about save before running etags."
+  (let ((extension (file-name-extension (buffer-file-name))))
+    (condition-case err
+        ad-do-it
+      (error (and (buffer-modified-p)
+                  (not (ding))
+                  (y-or-n-p "Buffer is modified, save it? ")
+                  (save-buffer))
+             (er-refresh-etags extension)
+             ad-do-it))))
+
+(defun er-refresh-etags (&optional extension)
+  "Run etags on all peer files in current dir and reload them silently."
+  (interactive)
+  (shell-command (format "etags *.%s" (or extension "el")))
+  (let ((tags-revert-without-query t))  ; don't query, revert silently          
+    (visit-tags-table default-directory nil)))
+
+(add-hook 'c-mode
+          (lambda ()
+            (setq company-backends '(company-dabbrev-code))))
+
+(global-set-key (kbd "C-x C-M-s") 'project-find-file)
