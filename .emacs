@@ -17,7 +17,7 @@
 
 ;; (add-to-list 'default-frame-alist `(font . ,(rc/get-default-font)))
 ;; (set-face-attribute 'default nil :font "iosevka-14" :height 160)
-(set-face-attribute 'default nil :font "JetBrains Mono" :height 140)
+;; (set-face-attribute 'default nil :font "JetBrains Mono" :height 140)
 ;; (set-face-attribute 'default nil :font "DejaVuSansMono" :height 160)
 
 (tool-bar-mode 0)
@@ -405,9 +405,19 @@ compilation-error-regexp-alist-alist
      ("Clean All" "(TeX-clean t)" TeX-run-function nil t :help "Delete generated intermediate and output files")
      ("Other" "" TeX-run-command t t :help "Run an arbitrary command")))
  '(browse-url-browser-function 'browse-url-generic)
- '(display-line-numbers-type 'relative)
+ '(compilation-always-kill t)
+ '(compilation-search-path nil)
+ '(display-line-numbers-type 'absolute)
+ '(eglot-autoreconnect t)
+ '(eglot-connect-timeout 10)
+ '(eglot-extend-to-xref t)
+ '(eglot-send-changes-idle-time 2)
+ '(eldoc-box-clear-with-C-g t)
+ '(eldoc-idle-delay 0.1)
  '(electric-pair-mode t)
+ '(global-eldoc-mode t)
  '(ispell-dictionary nil)
+ '(next-error-find-buffer-function 'next-error-buffer-unnavigated-current)
  '(org-agenda-dim-blocked-tasks nil)
  '(org-agenda-exporter-settings '((org-agenda-tag-filter-preset (list "+personal"))))
  '(org-cliplink-transport-implementation 'url-el)
@@ -416,7 +426,7 @@ compilation-error-regexp-alist-alist
    '(org-bbdb org-bibtex org-docview org-gnus org-habit org-info org-irc org-mhe org-rmail org-w3m))
  '(org-refile-use-outline-path 'file)
  '(package-selected-packages
-   '(slime helm-descbinds helm-descbindings lsp-ui lsp-mode mini-frame powerline auctex exec-path-from-shell astyle jupyter rainbow-mode proof-general hindent ag qml-mode racket-mode php-mode go-mode kotlin-mode nginx-mode toml-mode love-minor-mode dockerfile-mode nix-mode purescript-mode markdown-mode jinja2-mode nim-mode csharp-mode rust-mode cmake-mode clojure-mode graphviz-dot-mode lua-mode tuareg glsl-mode yaml-mode d-mode scala-mode move-text nasm-mode editorconfig tide powershell js2-mode yasnippet helm-ls-git helm-git-grep helm-cmd-t helm multiple-cursors magit haskell-mode paredit ido-completing-read+ smex gruber-darker-theme org-cliplink dash-functional dash))
+   '(eglot eldoc-box slime helm-descbinds helm-descbindings mini-frame powerline auctex exec-path-from-shell astyle jupyter rainbow-mode proof-general hindent ag qml-mode racket-mode php-mode go-mode kotlin-mode nginx-mode toml-mode love-minor-mode dockerfile-mode nix-mode purescript-mode markdown-mode jinja2-mode nim-mode csharp-mode rust-mode cmake-mode clojure-mode graphviz-dot-mode lua-mode tuareg glsl-mode yaml-mode d-mode scala-mode move-text nasm-mode editorconfig tide powershell js2-mode yasnippet helm-ls-git helm-git-grep helm-cmd-t helm multiple-cursors magit haskell-mode paredit ido-completing-read+ smex gruber-darker-theme org-cliplink dash-functional dash))
  '(safe-local-variable-values
    '((eval progn
            (auto-revert-mode 1)
@@ -432,6 +442,7 @@ compilation-error-regexp-alist-alist
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(eglot-highlight-symbol-face ((t (:inherit ignore :background "purple4"))))
  '(whitespace-space ((t (:foreground "#2f2f4f")))))
 
 (use-package rainbow-delimiters
@@ -502,9 +513,9 @@ compilation-error-regexp-alist-alist
 
 ;; (bind-key "C-c C-t C-X" #'TeX-command-toggle-shell-escape  LaTeX-mode-map)
 
-(setq company-minimum-prefix-length 3)
+(setq company-minimum-prefix-length 2)
 
-(setq display-line-numbers 'relative)
+(setq display-line-numbers 'absolute)
 
 (rc/require 'clang-format)
 (use-package clang-format)
@@ -530,38 +541,11 @@ compilation-error-regexp-alist-alist
 
 (load "~/.emacs.rc/gendoxy.el")
 
-(defun create-tags (dir-name)
-  "Create tags file."
-  (interactive "DDirectory: ")
-  (eshell-command 
-   (format "find %s -type f -name \"*.[ch]\" | etags -" dir-name)))
- 
- ;;;  Jonas.Jarnestrom<at>ki.ericsson.se A smarter               
-  ;;;  find-tag that automagically reruns etags when it cant find a               
-  ;;;  requested item and then makes a new try to locate it.                      
-  ;;;  Fri Mar 15 09:52:14 2002    
-(defadvice find-tag (around refresh-etags activate)
-  "Rerun etags and reload tags if tag not found and redo find-tag.              
-   If buffer is modified, ask about save before running etags."
-  (let ((extension (file-name-extension (buffer-file-name))))
-    (condition-case err
-        ad-do-it
-      (error (and (buffer-modified-p)
-                  (not (ding))
-                  (y-or-n-p "Buffer is modified, save it? ")
-                  (save-buffer))
-             (er-refresh-etags extension)
-             ad-do-it))))
-
-(defun er-refresh-etags (&optional extension)
-  "Run etags on all peer files in current dir and reload them silently."
-  (interactive)
-  (shell-command (format "etags *.%s" (or extension "el")))
-  (let ((tags-revert-without-query t))  ; don't query, revert silently          
-    (visit-tags-table default-directory nil)))
-
-(add-hook 'c-mode
-          (lambda ()
-            (setq company-backends '(company-dabbrev-code))))
-
 (global-set-key (kbd "C-x C-M-s") 'project-find-file)
+
+(rc/require 'eglot)
+(rc/require 'eldoc-box)
+
+(add-hook 'c-mode-hook 'eglot-ensure)
+(add-hook 'c-mode-hook 'eldoc-box-hover-mode)
+(global-set-key (kbd "M-?") 'xref-find-references)
