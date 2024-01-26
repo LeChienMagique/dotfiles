@@ -1,2 +1,2 @@
 #!/bin/bash
-rsync -av --delete .emacs* ../
+rsync -av --delete .emacs* $HOME
