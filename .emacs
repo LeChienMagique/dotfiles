@@ -16,7 +16,7 @@
 ;;    ((eq system-type 'gnu/linux) "iosevka-14")))
 
 ;; (add-to-list 'default-frame-alist `(font . ,(rc/get-default-font)))
-;; (set-face-attribute 'default nil :font "iosevka-14" :height 160)
+(set-face-attribute 'default nil :font "iosevka-14" :height 160)
 ;; (set-face-attribute 'default nil :font "JetBrains Mono" :height 140)
 ;; (set-face-attribute 'default nil :font "DejaVuSansMono" :height 160)
 
@@ -521,8 +521,8 @@ compilation-error-regexp-alist-alist
 (use-package clang-format)
 (global-set-key (kbd "C-M-l") 'clang-format-buffer)
 
-(require 'powerline)
-(powerline-center-theme)
+;; (rc/require 'powerline)
+;; (powerline-center-theme)
 
 ;; (use-package undo-tree)
 ;; (global-undo-tree-mode)
@@ -530,8 +530,8 @@ compilation-error-regexp-alist-alist
 (rc/require 'ivy)
 (ivy-mode 1)
 
-(use-package mini-frame)
-(mini-frame-mode 1)
+;; (rc/require 'mini-frame)
+;; (mini-frame-mode 1)
 
 (rc/require 'helm-descbinds)
 
@@ -539,7 +539,7 @@ compilation-error-regexp-alist-alist
 (rc/require 'slime)
 (setq inferior-lisp-program "sbcl")
 
-(load "~/.emacs.rc/gendoxy.el")
+;; (load "~/.emacs.rc/gendoxy.el")
 
 (global-set-key (kbd "C-x C-M-s") 'project-find-file)
 
