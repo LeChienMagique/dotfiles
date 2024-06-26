@@ -18,8 +18,9 @@
       ];
 
       monitor=[
-        "eDP-1, 1920x1200, 0, 1"
-        # "HDMI-A-1, 3840x2160, 0, 1"
+        # "eDP-1, 1920x1200, 1920x0, 1"
+        "HDMI-A-1, 2560x1440, 0x0, 1"
+        "eDP-1, disable"
       ];
 
       "misc:focus_on_activate" = true;
@@ -103,14 +104,15 @@
 
       "$mainMod" = "SUPER";
       bind = [
+        "$mainMod SHIFT, R, exec, pkill -SIGUSR2 waybar"
         "$mainMod SHIFT, O, exec, swaylock"
         "$mainMod, Q, exec, kitty            "
         "$mainMod, C, killactive,            "
         "$mainMod, M, exit,                  "
         "$mainMod, E, exec, dolphin          "
         "$mainMod, V, togglefloating,        "
-        "$mainMod, R, exec, rofi -show drun "
-        "$mainMod SHIFT, R, exec, rofi -show run "
+        "$mainMod, D, exec, rofi -show drun "
+        "$mainMod SHIFT, D, exec, rofi -show run "
         "$mainMod, P, pseudo, # dwindle      "
         "$mainMod, J, togglesplit, # dwindle "
         "$mainMod, left, movefocus, l                     "
@@ -157,7 +159,7 @@
       bindm = [ "$mainMod, mouse:272, movewindow" "$mainMod, mouse:273, resizewindow" ];
       
       workspace = [
-        "1, monitor:DP-2, defaultName:Emacs, on-created-empty: emacs"
+        "1, monitor:DP-2, on-created-empty: emacs"
         "2, monitor:DP-2"
         "3, defaultName:Firefox, on-created-empty: firefox"
         "4, monitor:DP-2"
@@ -165,7 +167,7 @@
         "6, monitor:DP-2"
         "7, monitor:DP-2"
         "8, monitor:DP-2, defaultName:Config"
-        "0, defaultName:Discord, on-created-empty: webcord"
+        # "0, defaultName:Discord, on-created-empty: webcord"
       ];
     };
   };

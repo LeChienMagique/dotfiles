@@ -1,4 +1,4 @@
-{
+[{
     "layer": "top",
     "position": "top",
     "height": 35,
@@ -7,13 +7,10 @@
     "margin-bottom": 10,
 
     // Choose the order of the modules
-    "modules-center": ["custom/launcher", "hyprland/workspaces", "custom/media", "idle_inhibitor",  "custom/updater", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "keyboard-state", "sway/language", "battery", "battery#bat2",  "tray", "clock", "custom/power"],
+    "modules-center": ["custom/launcher", "custom/media", "idle_inhibitor",  "custom/updater", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "keyboard-state", "sway/language", "battery", "battery#bat2",  "tray", "clock", "custom/power"],
 
     // Modules configuration
 
-     "hyprland/workspaces": {
-         "format": "{name}"
-    },
     "keyboard-state": {
         "numlock": true,
         "capslock": true,
@@ -137,4 +134,27 @@
         "interval": 15,
         "on-click": "alacritty -e yay -Syu"
     }
-}
+},
+ {
+    "layer": "top",
+    "position": "bottom",
+    "height": 35,
+    "spacing": 4,
+    "margin-top": 5,
+    "margin-bottom": 10,
+
+    // Choose the order of the modules
+    "modules-center": ["hyprland/workspaces"],
+
+    // Modules configuration
+
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "format-icons": {
+            "1":"",
+            "3": "",
+            "9": ""
+        }
+    }
+ }
+]
