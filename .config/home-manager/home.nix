@@ -18,9 +18,9 @@
       ];
 
       monitor=[
-        # "eDP-1, 1920x1200, 1920x0, 1"
-        "HDMI-A-1, 2560x1440, 0x0, 1"
-        "eDP-1, disable"
+        "eDP-1, 1920x1200, 1920x0, 1"
+        # "HDMI-A-1, 2560x1440@144, 0x0, 1"
+        # "eDP-1, disable"
       ];
 
       "misc:focus_on_activate" = true;
@@ -105,6 +105,7 @@
       "$mainMod" = "SUPER";
       bind = [
         "$mainMod SHIFT, R, exec, pkill -SIGUSR2 waybar"
+        # "$mainMod SHIFT, R, exec, pkill -SIGUSR1 swaylock"
         "$mainMod SHIFT, O, exec, swaylock"
         "$mainMod, Q, exec, kitty            "
         "$mainMod, C, killactive,            "
@@ -161,13 +162,13 @@
       workspace = [
         "1, monitor:DP-2, on-created-empty: emacs"
         "2, monitor:DP-2"
-        "3, defaultName:Firefox, on-created-empty: firefox"
+        "3, on-created-empty: firefox"
         "4, monitor:DP-2"
         "5, monitor:DP-2"
         "6, monitor:DP-2"
         "7, monitor:DP-2"
-        "8, monitor:DP-2, defaultName:Config"
-        # "0, defaultName:Discord, on-created-empty: webcord"
+        "8, monitor:DP-2"
+        # "10, on-created-empty: webcord"
       ];
     };
   };
