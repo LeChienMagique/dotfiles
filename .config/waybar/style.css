@@ -268,16 +268,23 @@ window#waybar.hidden {
 	/* padding-right: 10px; */
 	/* border-radius: 10px; */
 	/* transition: none; */
-	/* color: #161320; */
     background-image: url("wave1.svg"), url("wave2.svg"), url("wave3.svg");
     /* background-image: url("wave1.svg"); */
-    background-color: #ffffff;
+    background-color: rgb(110, 184, 229);
     background-repeat: repeat-x;
     background-size: cover;
     /* background-position: 0 130%, -50px 130%, 50px 130%; */
     background-position: 0% -10%, 500% 0%, 1000% -20%;
     /* background-position: -50% 0%; */
     animation: waves 30s linear infinite forwards;
+}
+
+#workspaces button {
+    color: #eaeaea;
+}
+
+#workspaces button.active {
+    background-color: rgba(110, 184, 256, 0.5);
 }
 
 
