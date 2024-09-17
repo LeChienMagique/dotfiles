@@ -1,6 +1,6 @@
 * {
 	border: none;
-	border-radius: 10;
+	border-radius: 10px;
     font-family: "JetbrainsMono Nerd Font" ;
 	font-size: 15px;
 	min-height: 10px;
@@ -160,6 +160,7 @@ window#waybar.hidden {
 	color: #161320;
 	background: #DDB6F2;
 }
+
 #cpu {
 	margin-top: 6px;
 	margin-left: 8px;
@@ -172,6 +173,18 @@ window#waybar.hidden {
 	background: #96CDFB;
 }
 
+#temperature {
+	margin-top: 6px;
+	margin-left: 8px;
+	padding-left: 10px;
+	margin-bottom: 0px;
+	padding-right: 10px;
+	border-radius: 10px;
+	transition: none;
+	color: #161320;
+	background: #ccdfff;
+}
+
 #tray {
 	margin-top: 6px;
 	margin-left: 8px;
@@ -180,8 +193,8 @@ window#waybar.hidden {
 	padding-right: 10px;
 	border-radius: 10px;
 	transition: none;
-	color: #B5E8E0;
-	background: #161320;
+	color: #161320;
+	background: #ea69a0;
 }
 
 #custom-launcher {
@@ -246,6 +259,7 @@ window#waybar.hidden {
 	background: #F2CDCD;
 }
 
+
 #workspaces {
 	/* margin-top: 6px; */
 	/* margin-left: 8px; */
@@ -255,5 +269,32 @@ window#waybar.hidden {
 	/* border-radius: 10px; */
 	/* transition: none; */
 	/* color: #161320; */
-	background: #96CDFB;
+    background-image: url("wave1.svg"), url("wave2.svg"), url("wave3.svg");
+    /* background-image: url("wave1.svg"); */
+    background-color: #ffffff;
+    background-repeat: repeat-x;
+    background-size: cover;
+    /* background-position: 0 130%, -50px 130%, 50px 130%; */
+    background-position: 0% -10%, 500% 0%, 1000% -20%;
+    /* background-position: -50% 0%; */
+    animation: waves 30s linear infinite forwards;
+}
+
+
+@keyframes waves {
+  to {
+      background-position: 2000% 0%, 2500% 0%, 3000% 0%;
+  }
+}
+
+#workspaces.active {
+	/* margin-top: 6px; */
+	/* margin-left: 8px; */
+	/* padding-left: 10px; */
+	/* margin-bottom: 0px; */
+	/* padding-right: 10px; */
+	/* border-radius: 10px; */
+	/* transition: none; */
+	/* color: #161320; */
+	background: #06CDFB;
 }

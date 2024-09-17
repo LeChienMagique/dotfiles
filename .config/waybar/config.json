@@ -7,7 +7,7 @@
     "margin-bottom": 10,
 
     // Choose the order of the modules
-    "modules-center": ["custom/launcher", "custom/media", "idle_inhibitor",  "custom/updater", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "keyboard-state", "sway/language", "battery", "battery#bat2",  "tray", "clock", "custom/power"],
+    "modules-center": ["custom/launcher", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "keyboard-state", "sway/language", "battery", "tray", "clock"],
 
     // Modules configuration
 
@@ -20,9 +20,11 @@
             "unlocked": ""
         }
     },
+
     "sway/mode": {
         "format": "<span style=\"italic\">{}</span>"
     },
+
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
@@ -30,35 +32,57 @@
             "deactivated": ""
         }
     },
+
     "tray": {
         "icon-size": 20,
         "spacing": 10
     },
+
     "clock": {
         // "timezone": "America/New_York",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%Y-%m-%d}"
+        "interval": 1,
+        "format": "{:%T}",
+        // "tooltip-format": "<big>{:}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%d-%m-%Y}",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+                    "mode"          : "year",
+                    "mode-mon-col"  : 3,
+                    "weeks-pos"     : "right",
+                    "format": {
+                              "months":     "<span color='#ffead3'><b>{}</b></span>",
+                              "days":       "<span color='#ecc6d9'><b>{}</b></span>",
+                              "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+                              "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+                              "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+                              }
+                    }
     },
+
     "cpu": {
         "format": "{usage}% ",
-        "tooltip": false
+        "tooltip": true
     },
+
     "memory": {
         "format": "{}% "
     },
+
     "temperature": {
-        // "thermal-zone": 2,
-        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        // "thermal-zone": 5,
+        "hwmon-path": "/sys/devices/platform/thinkpad_hwmon/hwmon/hwmon5/temp1_input",
         "critical-threshold": 80,
         // "format-critical": "{temperatureC}°C {icon}",
-        "format": "{temperatureC}°C {icon}",
-        "format-icons": ["", "", ""]
+        "format": "{temperatureC}°C ",
+        "tooltip": true
     },
+
     "backlight": {
         // "device": "acpi_video1",
         "format": "{percent}% {icon}",
         "format-icons": ["", ""]
     },
+
     "battery": {
         "states": {
             // "good": 95,
@@ -73,9 +97,11 @@
         // "format-full": "",
         "format-icons": ["", "", "", "", ""]
     },
+
     "battery#bat2": {
         "bat": "BAT2"
     },
+
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
         "format-wifi": "{essid} ({signalStrength}%) ",
@@ -86,6 +112,7 @@
         "format-alt": "{ifname}: {ipaddr}/{cidr}",
         "on-click-right": "bash ~/.config/rofi/wifi_menu/rofi_wifi_menu"
     },
+
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
         "format": "{volume}% {icon}",
@@ -105,6 +132,7 @@
         },
         "on-click": "pavucontrol"
     },
+
     "custom/media": {
         "format": "{icon} {}",
         "return-type": "json",
@@ -117,23 +145,12 @@
         "exec": "$HOME/.config/system_scripts/mediaplayer.py 2> /dev/null",
         "on-click": "playerctl play-pause"
     },
+
     "custom/launcher":{
         "format": " ",
         "on-click": "rofi -show drun -theme ~/.config/rofi/sway/sway_config.rasi",
         "on-click-right": "killall rofi"
     },
-    "custom/power":{
-        "format": " ",
-        "on-click": "bash ~/.config/rofi/leave/powermenu.sh",
-        "on-click-right": "killall rofi"
-    },
-    "custom/updater":{
-        "format": "  {} Updates",
-        "exec": "yay -Qu | wc -l",
-        "exec-if": "[[ $(yay -Qu | wc -l) != 0 ]]",
-        "interval": 15,
-        "on-click": "alacritty -e yay -Syu"
-    }
 },
  {
     "layer": "top",
