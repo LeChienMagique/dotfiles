@@ -1,3 +1,8 @@
+@define-color background-color #1B263B;
+@define-color font-color      #EAEAEA;
+@define-color front-color       #7CAFCB;
+@define-color secondary-color  #0D1B2A;
+
 * {
 	border: none;
 	border-radius: 10px;
@@ -23,49 +28,6 @@ window#waybar.hidden {
     color: transparent;
 	background: transparent;
 }
-#tags {
-	margin-top: 6px;
-	margin-left: 12px;
-	font-size: 4px;
-	margin-bottom: 0px;
-	border-radius: 10px;
-	background: #161320;
-	transition: none;
-}
-
-#tags button {
-	transition: none;
-	color: #B5E8E0;
-	background: transparent;
-	font-size: 16px;
-	border-radius: 2px;
-}
-
-#tags button.occupied {
-	transition: none;
-	color: #F28FAD;
-	background: transparent;
-	font-size: 4px;
-}
-
-#tags button.focused {
-	color: #ABE9B3;
-    border-top: 2px solid #ABE9B3;
-    border-bottom: 2px solid #ABE9B3;
-}
-
-#tags button:hover {
-	transition: none;
-	box-shadow: inherit;
-	text-shadow: inherit;
-	color: #FAE3B0;
-    border-color: #E8A2AF;
-    color: #E8A2AF;
-}
-
-#tags button.focused:hover {
-    color: #E8A2AF;
-}
 
 #network {
 	margin-top: 6px;
@@ -75,8 +37,8 @@ window#waybar.hidden {
 	margin-bottom: 0px;
 	border-radius: 10px;
 	transition: none;
-	color: #161320;
-	background: #bd93f9;
+	color: @font-color;
+	background: @background-color;
 }
 
 #pulseaudio {
@@ -87,8 +49,8 @@ window#waybar.hidden {
 	margin-bottom: 0px;
 	border-radius: 10px;
 	transition: none;
-	color: #1A1826;
-	background: #FAE3B0;
+   	color: @font-color;
+	background: @background-color;
 }
 
 #battery {
@@ -99,18 +61,18 @@ window#waybar.hidden {
 	margin-bottom: 0px;
 	border-radius: 10px;
 	transition: none;
-	color: #161320;
-	background: #B5E8E0;
+	color: @font-color;
+	background: @background-color;
 }
 
 #battery.charging, #battery.plugged {
-	color: #161320;
-    background-color: #B5E8E0;
+	color: @font-color;
+    background-color: @background-color;
 }
 
 #battery.critical:not(.charging) {
-    background-color: #B5E8E0;
-    color: #161320;
+    background-color: @background-color;
+   	color: @font-color;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: linear;
@@ -120,8 +82,8 @@ window#waybar.hidden {
 
 @keyframes blink {
     to {
-        background-color: #BF616A;
-        color: #B5E8E0;
+        background-color: @background-color;
+       	color: @font-color;
     }
 }
 
@@ -133,8 +95,8 @@ window#waybar.hidden {
 	margin-bottom: 0px;
 	border-radius: 10px;
 	transition: none;
-	color: #161320;
-	background: #F8BD96;
+	color: @font-color;
+	background: @background-color;
 }
 #clock {
 	margin-top: 6px;
@@ -144,9 +106,9 @@ window#waybar.hidden {
 	margin-bottom: 0px;
 	border-radius: 10px;
 	transition: none;
-	color: #161320;
-	background: #ABE9B3;
-	/*background: #1A1826;*/
+	color: @font-color;
+	background: @background-color;
+	/*background: @background-color;*/
 }
 
 #memory {
@@ -157,8 +119,8 @@ window#waybar.hidden {
 	padding-right: 10px;
 	border-radius: 10px;
 	transition: none;
-	color: #161320;
-	background: #DDB6F2;
+	color: @font-color;
+	background: @background-color;
 }
 
 #cpu {
@@ -169,8 +131,8 @@ window#waybar.hidden {
 	padding-right: 10px;
 	border-radius: 10px;
 	transition: none;
-	color: #161320;
-	background: #96CDFB;
+	color: @font-color;
+	background: @background-color;
 }
 
 #temperature {
@@ -181,8 +143,8 @@ window#waybar.hidden {
 	padding-right: 10px;
 	border-radius: 10px;
 	transition: none;
-	color: #161320;
-	background: #ccdfff;
+	color: @font-color;
+	background: @background-color;
 }
 
 #tray {
@@ -193,8 +155,8 @@ window#waybar.hidden {
 	padding-right: 10px;
 	border-radius: 10px;
 	transition: none;
-	color: #161320;
-	background: #ea69a0;
+	color: @font-color;
+	background: @background-color;
 }
 
 #custom-launcher {
@@ -205,8 +167,8 @@ window#waybar.hidden {
 	padding-right: 5px;
 	border-radius: 10px;
 	transition: none;
-    color: #89DCEB;
-    background: #161320;
+   	color: @font-color;
+    background: @background-color;
 }
 
 #custom-power {
@@ -219,8 +181,8 @@ window#waybar.hidden {
 	margin-bottom: 0px;
 	border-radius: 10px;
 	transition: none;
-	color: #161320;
-	background: #F28FAD;
+	color: @font-color;
+	background: @background-color;
 }
 
 #custom-wallpaper {
@@ -231,8 +193,8 @@ window#waybar.hidden {
 	margin-bottom: 0px;
 	border-radius: 10px;
 	transition: none;
-	color: #161320;
-	background: #C9CBFF;
+	color: @font-color;
+	background: @background-color;
 }
 
 #custom-updates {
@@ -243,8 +205,8 @@ window#waybar.hidden {
 	margin-bottom: 0px;
 	border-radius: 10px;
 	transition: none;
-	color: #161320;
-	background: #E8A2AF;
+	color: @font-color;
+	background: @background-color;
 }
 
 #custom-media {
@@ -255,8 +217,8 @@ window#waybar.hidden {
 	margin-bottom: 0px;
 	border-radius: 10px;
 	transition: none;
-	color: #161320;
-	background: #F2CDCD;
+	color: @font-color;
+	background: @background-color;
 }
 
 
@@ -270,7 +232,7 @@ window#waybar.hidden {
 	/* transition: none; */
     background-image: url("wave1.svg"), url("wave2.svg"), url("wave3.svg");
     /* background-image: url("wave1.svg"); */
-    background-color: rgb(110, 184, 229);
+    background-color: @background-color;
     background-repeat: repeat-x;
     background-size: cover;
     /* background-position: 0 130%, -50px 130%, 50px 130%; */
@@ -280,11 +242,11 @@ window#waybar.hidden {
 }
 
 #workspaces button {
-    color: #eaeaea;
+   	color: @font-color;
 }
 
 #workspaces button.active {
-    background-color: rgba(110, 184, 256, 0.5);
+    background-color: @front-color;
 }
 
 
@@ -302,6 +264,31 @@ window#waybar.hidden {
 	/* padding-right: 10px; */
 	/* border-radius: 10px; */
 	/* transition: none; */
-	/* color: #161320; */
-	background: #06CDFB;
+    /* color: #161320; */
+	background: @background-color;
+}
+
+
+#disk {
+	margin-top: 6px;
+	margin-left: 8px;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-bottom: 0px;
+	border-radius: 10px;
+	transition: none;
+	color: @font-color;
+	background: @background-color;
+}
+
+#image {
+	margin-top: 6px;
+	margin-left: 8px;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-bottom: 0px;
+	border-radius: 10px;
+	transition: none;
+	color: @font-color;
+	background: @background-color;
 }

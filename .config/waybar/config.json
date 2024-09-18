@@ -7,9 +7,38 @@
     "margin-bottom": 10,
 
     // Choose the order of the modules
-    "modules-center": ["custom/launcher", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "keyboard-state", "sway/language", "battery", "tray", "clock"],
+    "modules-left": ["group/metrics"],
+    "modules-center": ["clock"],
+    "modules-right": ["tray", "pulseaudio", "backlight"],
 
     // Modules configuration
+
+    "group/metrics": {
+        "orientation": "horizontal",
+        "drawer": {
+            "transition-duration": 500,
+            "transition-left-to-right": true,
+        },
+        "modules": [
+            "image#metrics",
+            "temperature",
+            "cpu",
+            "memory",
+            "disk",
+        ],
+    }, 
+
+    "image#metrics": {
+        "path": "metrics.png",
+        "size": 32,
+    },
+
+    "disk": {
+        "interval": 30,
+        "path": "/",
+        "format": "{free} ",
+        "unit": "GB",
+    },
 
     "keyboard-state": {
         "numlock": true,
@@ -83,34 +112,9 @@
         "format-icons": ["", ""]
     },
 
-    "battery": {
-        "states": {
-            // "good": 95,
-            "warning": 30,
-            "critical": 15
-        },
-        "format": "{capacity}% {icon}",
-        "format-charging": "{capacity}% ",
-        "format-plugged": "{capacity}% ",
-        "format-alt": "{time} {icon}",
-        // "format-good": "", // An empty format will hide the module
-        // "format-full": "",
-        "format-icons": ["", "", "", "", ""]
-    },
 
     "battery#bat2": {
         "bat": "BAT2"
-    },
-
-    "network": {
-        // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-ethernet": "Connected  ",
-        "tooltip-format": "{ifname} via {gwaddr} ",
-        "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ⚠",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}",
-        "on-click-right": "bash ~/.config/rofi/wifi_menu/rofi_wifi_menu"
     },
 
     "pulseaudio": {
@@ -146,34 +150,63 @@
         "on-click": "playerctl play-pause"
     },
 
-    "custom/launcher":{
-        "format": " ",
-        "on-click": "rofi -show drun -theme ~/.config/rofi/sway/sway_config.rasi",
-        "on-click-right": "killall rofi"
-    },
+    // "custom/launcher":{
+    //     "format": " ",
+    //     "on-click": "rofi -show drun -theme ~/.config/rofi/sway/sway_config.rasi",
+    //     "on-click-right": "killall rofi"
+    // },
 },
  {
-    "layer": "top",
-    "position": "bottom",
-    "height": 35,
-    "spacing": 4,
-    "margin-top": 5,
-    "margin-bottom": 10,
+     "layer": "top",
+     "position": "bottom",
+     "height": 35,
+     "spacing": 4,
+     "margin-top": 5,
+     "margin-bottom": 10,
 
-    // Choose the order of the modules
-    "modules-center": ["hyprland/workspaces"],
+     // Choose the order of the modules
+     "modules-center": ["hyprland/workspaces"],
+     "modules-right": ["network", "battery"],
 
-    // Modules configuration
+     // Modules configuration
 
-    "hyprland/workspaces": {
-        "format": "{icon}",
-        "format-icons": {
-            "1":"",
-            "2": "",
-            "3": "",
-            "8": "",
-            "10": ""
-        }
-    }
+     "hyprland/workspaces": {
+         "format": "{icon}",
+         "format-icons": {
+             "1":"",
+             "2": "",
+             "3": "",
+             "8": "",
+             "10": ""
+         }
+     },
+
+     "battery": {
+         "states": {
+             // "good": 95,
+             "warning": 30,
+             "critical": 15
+         },
+         "format": "{capacity}% {icon}",
+         "format-charging": "{capacity}% ",
+         "format-plugged": "{capacity}% ",
+         "format-alt": "{time} {icon}",
+         // "format-good": "", // An empty format will hide the module
+         // "format-full": "",
+         "format-icons": ["", "", "", "", ""]
+     },
+
+     "network": {
+         // "interface": "wlp2*", // (Optional) To force the use of this interface
+         "format-wifi": "{essid} ({signalStrength}%) ",
+         "format-ethernet": "Connected  ",
+         "tooltip-format": "{ifname} via {gwaddr} ",
+         "format-linked": "{ifname} (No IP) ",
+         "format-disconnected": "Disconnected ⚠",
+         "format-alt": "{ifname}: {ipaddr}/{cidr}",
+         "on-click-right": "bash ~/.config/rofi/wifi_menu/rofi_wifi_menu"
+     },
+
+
  }
 ]
