@@ -1,4 +1,4 @@
-@define-color background-color #1B263B;
+@define-color background-color #273654;
 @define-color font-color      #EAEAEA;
 @define-color front-color       #7CAFCB;
 @define-color secondary-color  #0D1B2A;
@@ -9,10 +9,12 @@
     font-family: "JetbrainsMono Nerd Font" ;
 	font-size: 15px;
 	min-height: 10px;
+    background: transparent;
 }
 
-window#waybar {
-	background: transparent;
+window#waybar.top {
+	background-color: @secondary-color;
+	/* background-color: transparent; */
 }
 
 window#waybar.hidden {
@@ -20,17 +22,20 @@ window#waybar.hidden {
 }
 
 #window {
-	margin-top: 6px;
+	margin-top: 0px;
+	margin-left: 8px;
+	margin-bottom: 0px;
 	padding-left: 10px;
 	padding-right: 10px;
+
 	border-radius: 10px;
 	transition: none;
-    color: transparent;
-	background: transparent;
+	color: @front-color;
+	background-color: @background-color;
 }
 
 #network {
-	margin-top: 6px;
+	margin-top: 0px;
 	margin-left: 8px;
 	padding-left: 10px;
 	padding-right: 10px;
@@ -42,7 +47,7 @@ window#waybar.hidden {
 }
 
 #pulseaudio {
-	margin-top: 6px;
+	margin-top: 0px;
 	margin-left: 8px;
 	padding-left: 10px;
 	padding-right: 10px;
@@ -54,7 +59,7 @@ window#waybar.hidden {
 }
 
 #battery {
-	margin-top: 6px;
+	margin-top: 0px;
 	margin-left: 8px;
 	padding-left: 10px;
 	padding-right: 10px;
@@ -88,7 +93,7 @@ window#waybar.hidden {
 }
 
 #backlight {
-	margin-top: 6px;
+	margin-top: 0px;
 	margin-left: 8px;
 	padding-left: 10px;
 	padding-right: 10px;
@@ -98,8 +103,9 @@ window#waybar.hidden {
 	color: @font-color;
 	background: @background-color;
 }
+
 #clock {
-	margin-top: 6px;
+	margin-top: 0px;
 	margin-left: 8px;
 	padding-left: 10px;
 	padding-right: 10px;
@@ -108,11 +114,10 @@ window#waybar.hidden {
 	transition: none;
 	color: @font-color;
 	background: @background-color;
-	/*background: @background-color;*/
 }
 
 #memory {
-	margin-top: 6px;
+	margin-top: 0px;
 	margin-left: 8px;
 	padding-left: 10px;
 	margin-bottom: 0px;
@@ -124,7 +129,7 @@ window#waybar.hidden {
 }
 
 #cpu {
-	margin-top: 6px;
+	margin-top: 0px;
 	margin-left: 8px;
 	padding-left: 10px;
 	margin-bottom: 0px;
@@ -136,7 +141,7 @@ window#waybar.hidden {
 }
 
 #temperature {
-	margin-top: 6px;
+	margin-top: 0px;
 	margin-left: 8px;
 	padding-left: 10px;
 	margin-bottom: 0px;
@@ -148,7 +153,7 @@ window#waybar.hidden {
 }
 
 #tray {
-	margin-top: 6px;
+	margin-top: 0px;
 	margin-left: 8px;
 	padding-left: 10px;
 	margin-bottom: 0px;
@@ -158,87 +163,14 @@ window#waybar.hidden {
 	color: @font-color;
 	background: @background-color;
 }
-
-#custom-launcher {
-	font-size: 24px;
-	margin-top: 6px;
-	margin-left: 8px;
-	padding-left: 10px;
-	padding-right: 5px;
-	border-radius: 10px;
-	transition: none;
-   	color: @font-color;
-    background: @background-color;
-}
-
-#custom-power {
-	font-size: 20px;
-	margin-top: 6px;
-	margin-left: 8px;
-	margin-right: 8px;
-	padding-left: 10px;
-	padding-right: 5px;
-	margin-bottom: 0px;
-	border-radius: 10px;
-	transition: none;
-	color: @font-color;
-	background: @background-color;
-}
-
-#custom-wallpaper {
-	margin-top: 6px;
-	margin-left: 8px;
-	padding-left: 10px;
-	padding-right: 10px;
-	margin-bottom: 0px;
-	border-radius: 10px;
-	transition: none;
-	color: @font-color;
-	background: @background-color;
-}
-
-#custom-updates {
-	margin-top: 6px;
-	margin-left: 8px;
-	padding-left: 10px;
-	padding-right: 10px;
-	margin-bottom: 0px;
-	border-radius: 10px;
-	transition: none;
-	color: @font-color;
-	background: @background-color;
-}
-
-#custom-media {
-	margin-top: 6px;
-	margin-left: 8px;
-	padding-left: 10px;
-	padding-right: 10px;
-	margin-bottom: 0px;
-	border-radius: 10px;
-	transition: none;
-	color: @font-color;
-	background: @background-color;
-}
-
 
 #workspaces {
-	/* margin-top: 6px; */
-	/* margin-left: 8px; */
-	/* padding-left: 10px; */
-	/* margin-bottom: 0px; */
-	/* padding-right: 10px; */
-	/* border-radius: 10px; */
-	/* transition: none; */
     background-image: url("wave1.svg"), url("wave2.svg"), url("wave3.svg");
-    /* background-image: url("wave1.svg"); */
     background-color: @background-color;
     background-repeat: repeat-x;
     background-size: cover;
-    /* background-position: 0 130%, -50px 130%, 50px 130%; */
     background-position: 0% -10%, 500% 0%, 1000% -20%;
-    /* background-position: -50% 0%; */
-    animation: waves 30s linear infinite forwards;
+    animation: waves 100s linear infinite forwards;
 }
 
 #workspaces button {
@@ -257,20 +189,12 @@ window#waybar.hidden {
 }
 
 #workspaces.active {
-	/* margin-top: 6px; */
-	/* margin-left: 8px; */
-	/* padding-left: 10px; */
-	/* margin-bottom: 0px; */
-	/* padding-right: 10px; */
-	/* border-radius: 10px; */
-	/* transition: none; */
-    /* color: #161320; */
 	background: @background-color;
 }
 
 
 #disk {
-	margin-top: 6px;
+	margin-top: 0px;
 	margin-left: 8px;
 	padding-left: 10px;
 	padding-right: 10px;
@@ -282,7 +206,7 @@ window#waybar.hidden {
 }
 
 #image {
-	margin-top: 6px;
+	margin-top: 0px;
 	margin-left: 8px;
 	padding-left: 10px;
 	padding-right: 10px;

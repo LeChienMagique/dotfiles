@@ -4,14 +4,19 @@
     "height": 35,
     "spacing": 4,
     "margin-top": 5,
-    "margin-bottom": 10,
+    "margin-bottom": 5,
 
     // Choose the order of the modules
     "modules-left": ["group/metrics"],
-    "modules-center": ["clock"],
+    "modules-center": ["hyprland/window"],
     "modules-right": ["tray", "pulseaudio", "backlight"],
 
     // Modules configuration
+    "hyprland/window": {
+        "format": "{title}",
+        "separate-outputs": true,
+        "icon": true,
+    },
 
     "group/metrics": {
         "orientation": "horizontal",
@@ -65,27 +70,6 @@
     "tray": {
         "icon-size": 20,
         "spacing": 10
-    },
-
-    "clock": {
-        // "timezone": "America/New_York",
-        "interval": 1,
-        "format": "{:%T}",
-        // "tooltip-format": "<big>{:}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%d-%m-%Y}",
-        "tooltip-format": "<tt><small>{calendar}</small></tt>",
-        "calendar": {
-                    "mode"          : "year",
-                    "mode-mon-col"  : 3,
-                    "weeks-pos"     : "right",
-                    "format": {
-                              "months":     "<span color='#ffead3'><b>{}</b></span>",
-                              "days":       "<span color='#ecc6d9'><b>{}</b></span>",
-                              "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
-                              "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
-                              "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
-                              }
-                    }
     },
 
     "cpu": {
@@ -156,6 +140,7 @@
     //     "on-click-right": "killall rofi"
     // },
 },
+
  {
      "layer": "top",
      "position": "bottom",
@@ -165,6 +150,7 @@
      "margin-bottom": 10,
 
      // Choose the order of the modules
+     "modules-left": ["clock"],
      "modules-center": ["hyprland/workspaces"],
      "modules-right": ["network", "battery"],
 
@@ -207,6 +193,26 @@
          "on-click-right": "bash ~/.config/rofi/wifi_menu/rofi_wifi_menu"
      },
 
+     "clock": {
+         // "timezone": "America/New_York",
+         "interval": 1,
+         "format": " {:%T}",
+         // "tooltip-format": "<big>{:}</big>\n<tt><small>{calendar}</small></tt>",
+         "format-alt": "{:%d-%m-%Y}",
+         "tooltip-format": "<tt><small>{calendar}</small></tt>",
+         "calendar": {
+             "mode"          : "year",
+             "mode-mon-col"  : 3,
+             "weeks-pos"     : "right",
+             "format": {
+                 "months":     "<span color='#ffead3'><b>{}</b></span>",
+                 "days":       "<span color='#ecc6d9'><b>{}</b></span>",
+                 "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+                 "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+                 "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+             }
+         }
+     },
 
  }
 ]
