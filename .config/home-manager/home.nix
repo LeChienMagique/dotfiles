@@ -1,4 +1,6 @@
-{ pkgs, lib, config, inputs, ...}: {
+{ pkgs, lib, config, inputs, ...}:
+{
+
   home.stateVersion = "23.11";
   home.username = "lechienmagique";
   home.homeDirectory = "/home/lechienmagique";
@@ -18,9 +20,11 @@
       ];
 
       monitor=[
-        "eDP-1, 1920x1200, 1920x0, 1"
-        # "HDMI-A-1, 2560x1440@144, 0x0, 1"
-        # "eDP-1, disable"
+        # "eDP-1, 1920x1200, 0x0, 1"
+        # "DP-7, disable"
+
+        "eDP-1, disable"
+        "DP-7, 2560x1440@144, 0x0, 1"
       ];
 
       "misc:focus_on_activate" = true;
@@ -37,6 +41,7 @@
         };
 
         sensitivity = 0;
+        accel_profile = "flat";
       };
 
       general = {
