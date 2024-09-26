@@ -8,15 +8,30 @@
 
     // Choose the order of the modules
     "modules-left": ["group/metrics"],
-    "modules-center": ["hyprland/window"],
+    "modules-center": ["clock"],
     "modules-right": ["tray", "pulseaudio", "backlight"],
 
     // Modules configuration
-    "hyprland/window": {
-        "format": "{title}",
-        "separate-outputs": true,
-        "icon": true,
-    },
+     "clock": {
+         // "timezone": "America/New_York",
+         "interval": 1,
+         "format": " {:%T}",
+         // "tooltip-format": "<big>{:}</big>\n<tt><small>{calendar}</small></tt>",
+         "format-alt": "{:%d-%m-%Y}",
+         "tooltip-format": "<tt><small>{calendar}</small></tt>",
+         "calendar": {
+             "mode"          : "year",
+             "mode-mon-col"  : 3,
+             "weeks-pos"     : "right",
+             "format": {
+                 "months":     "<span color='#ffead3'><b>{}</b></span>",
+                 "days":       "<span color='#ecc6d9'><b>{}</b></span>",
+                 "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+                 "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+                 "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+             }
+         }
+     },
 
     "group/metrics": {
         "orientation": "horizontal",
@@ -150,7 +165,7 @@
      "margin-bottom": 10,
 
      // Choose the order of the modules
-     "modules-left": ["clock"],
+     "modules-left": ["hyprland/window"],
      "modules-center": ["hyprland/workspaces"],
      "modules-right": ["network", "battery"],
 
@@ -193,26 +208,11 @@
          "on-click-right": "bash ~/.config/rofi/wifi_menu/rofi_wifi_menu"
      },
 
-     "clock": {
-         // "timezone": "America/New_York",
-         "interval": 1,
-         "format": " {:%T}",
-         // "tooltip-format": "<big>{:}</big>\n<tt><small>{calendar}</small></tt>",
-         "format-alt": "{:%d-%m-%Y}",
-         "tooltip-format": "<tt><small>{calendar}</small></tt>",
-         "calendar": {
-             "mode"          : "year",
-             "mode-mon-col"  : 3,
-             "weeks-pos"     : "right",
-             "format": {
-                 "months":     "<span color='#ffead3'><b>{}</b></span>",
-                 "days":       "<span color='#ecc6d9'><b>{}</b></span>",
-                 "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
-                 "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
-                 "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
-             }
-         }
-     },
-
+    "hyprland/window": {
+        "format": "{title}",
+        "separate-outputs": true,
+        "icon": true,
+    },
+     
  }
 ]

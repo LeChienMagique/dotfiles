@@ -13,8 +13,8 @@
 }
 
 window#waybar.top {
-	background-color: @secondary-color;
-	/* background-color: transparent; */
+	/* background-color: @secondary-color; */
+	background-color: transparent;
 }
 
 window#waybar.hidden {
@@ -191,7 +191,6 @@ window#waybar.hidden {
 #workspaces.active {
 	background: @background-color;
 }
-
 
 #disk {
 	margin-top: 0px;
