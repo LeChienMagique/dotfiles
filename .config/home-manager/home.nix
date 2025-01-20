@@ -1,7 +1,7 @@
 { pkgs, lib, config, inputs, ...}:
 {
 
-  home.stateVersion = "23.11";
+  home.stateVersion = "24.11";
   home.username = "lechienmagique";
   home.homeDirectory = "/home/lechienmagique";
 
@@ -20,11 +20,11 @@
       ];
 
       monitor=[
-        # "eDP-1, 1920x1200, 0x0, 1"
-        # "DP-7, disable"
+        "eDP-1, 1920x1200, 0x0, 1"
+        "DP-7, disable"
 
-        "eDP-1, disable"
-        "DP-7, 2560x1440@144, 0x0, 1"
+        # "eDP-1, disable"
+        # "DP-7, 2560x1440@144, 0x0, 1"
       ];
 
       "misc:focus_on_activate" = true;
@@ -41,7 +41,7 @@
         };
 
         sensitivity = 0;
-        accel_profile = "flat";
+        # accel_profile = "flat";
       };
 
       general = {
@@ -66,10 +66,12 @@
           passes = 1;
         };
 
-        drop_shadow = "yes";
-        shadow_range = 4;
-        shadow_render_power = 3;
-        "col.shadow" = "rgba(1a1a1aee)";
+        shadow = {
+          enabled = true;
+          range = 4;
+          render_power = 3;
+          color = "rgba(1a1a1aee)";
+        };
       };
 
 
@@ -95,7 +97,7 @@
         preserve_split = "yes";
       };
       
-      master.new_is_master = true;
+      # master.new_is_master = true;
       gestures.workspace_swipe = "off";
       misc.force_default_wallpaper = -1;
 
@@ -167,7 +169,7 @@
       workspace = [
         "1, monitor:DP-2, on-created-empty: emacs"
         "2, monitor:DP-2"
-        "3, on-created-empty: firefox"
+        "3, on-created-empty: google-chrome-stable"
         "4, monitor:DP-2"
         "5, monitor:DP-2"
         "6, monitor:DP-2"

@@ -426,7 +426,7 @@ compilation-error-regexp-alist-alist
    '(org-bbdb org-bibtex org-docview org-gnus org-habit org-info org-irc org-mhe org-rmail org-w3m))
  '(org-refile-use-outline-path 'file)
  '(package-selected-packages
-   '(buffer-move eglot eldoc-box slime helm-descbinds helm-descbindings mini-frame powerline auctex exec-path-from-shell astyle jupyter rainbow-mode proof-general hindent ag qml-mode racket-mode php-mode go-mode kotlin-mode nginx-mode toml-mode love-minor-mode dockerfile-mode nix-mode purescript-mode markdown-mode jinja2-mode nim-mode csharp-mode rust-mode cmake-mode clojure-mode graphviz-dot-mode lua-mode tuareg glsl-mode yaml-mode d-mode scala-mode move-text nasm-mode editorconfig tide powershell js2-mode yasnippet helm-ls-git helm-git-grep helm-cmd-t helm multiple-cursors magit haskell-mode paredit ido-completing-read+ smex gruber-darker-theme org-cliplink dash-functional dash))
+   '(diff-hl buffer-move eglot eldoc-box slime helm-descbinds helm-descbindings mini-frame powerline auctex exec-path-from-shell astyle jupyter rainbow-mode proof-general hindent ag qml-mode racket-mode php-mode go-mode kotlin-mode nginx-mode toml-mode love-minor-mode dockerfile-mode nix-mode purescript-mode markdown-mode jinja2-mode nim-mode csharp-mode rust-mode cmake-mode clojure-mode graphviz-dot-mode lua-mode tuareg glsl-mode yaml-mode d-mode scala-mode move-text nasm-mode editorconfig tide powershell js2-mode yasnippet helm-ls-git helm-git-grep helm-cmd-t helm multiple-cursors magit haskell-mode paredit ido-completing-read+ smex gruber-darker-theme org-cliplink dash-functional dash))
  '(safe-local-variable-values
    '((eval progn
            (auto-revert-mode 1)
@@ -559,3 +559,9 @@ compilation-error-regexp-alist-alist
 (global-set-key (kbd "<C-S-down>")   'buf-move-down)
 (global-set-key (kbd "<C-S-left>")   'buf-move-left)
 (global-set-key (kbd "<C-S-right>")  'buf-move-right)
+
+(rc/require 'diff-hl)
+(global-diff-hl-mode)
+(add-hook 'dired-mode-hook 'diff-hl-dired-mode)
+(add-hook 'magit-pre-refresh-hook 'diff-hl-magit-pre-refresh)
+(add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
