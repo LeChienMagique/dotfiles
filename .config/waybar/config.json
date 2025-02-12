@@ -49,7 +49,7 @@
     }, 
 
     "image#metrics": {
-        "path": "metrics.png",
+        "path": "/home/lechienmagique/.config/waybar/metrics.png",
         "size": 32,
     },
 
