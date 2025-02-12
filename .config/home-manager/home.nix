@@ -54,7 +54,6 @@
         allow_tearing = false;
       };
 
-
       decoration = {
         # See https://wiki.hyprland.org/Configuring/Variables/ for more
 
@@ -102,6 +101,7 @@
       misc.force_default_wallpaper = -1;
 
       windowrulev2 = [
+        # "opacity 0.8 0.8 override,class:^(kitty)$"
         "opacity 0.0 override,class:^(xwaylandvideobridge)$"
         "noanim,class:^(xwaylandvideobridge)$"
         "noinitialfocus,class:^(xwaylandvideobridge)$"

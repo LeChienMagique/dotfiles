@@ -333,11 +333,15 @@ compilation-error-regexp-alist-alist
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(LaTeX-command "latex")
+ '(LaTeX-command-style
+   '(("" "%(PDF)%(latex) %(file-line-error) %(extraopts) %(output-dir) %S%(PDFout)")))
+ '(TeX-command "tex")
  '(TeX-command-list
    '(("TeX" "%(PDF)%(tex) %(file-line-error) %`%(extraopts) %S%(PDFout)%(mode)%' %(output-dir) %t" TeX-run-TeX nil
       (plain-tex-mode texinfo-mode ams-tex-mode)
       :help "Run plain TeX")
-     ("LaTeX" "%`%l%(mode)%' %T" TeX-run-TeX nil
+     ("LaTeX" "%`%l -shell-escape  %(mode)%' %T" TeX-run-TeX nil
       (latex-mode doctex-mode)
       :help "Run LaTeX")
      ("Makeinfo" "makeinfo %(extraopts) %(o-dir) %t" TeX-run-compile nil
@@ -404,6 +408,7 @@ compilation-error-regexp-alist-alist
      ("Clean" "TeX-clean" TeX-run-function nil t :help "Delete generated intermediate files")
      ("Clean All" "(TeX-clean t)" TeX-run-function nil t :help "Delete generated intermediate and output files")
      ("Other" "" TeX-run-command t t :help "Run an arbitrary command")))
+ '(TeX-view-program-selection '((output-pdf "Evince") (output-dvi "Okular")))
  '(browse-url-browser-function 'browse-url-generic)
  '(compilation-always-kill t)
  '(compilation-search-path nil)
@@ -417,6 +422,7 @@ compilation-error-regexp-alist-alist
  '(electric-pair-mode t)
  '(global-eldoc-mode t)
  '(ispell-dictionary nil)
+ '(latex-preview-pane-multifile-mode 'off)
  '(next-error-find-buffer-function 'next-error-buffer-unnavigated-current)
  '(org-agenda-dim-blocked-tasks nil)
  '(org-agenda-exporter-settings '((org-agenda-tag-filter-preset (list "+personal"))))
@@ -426,12 +432,14 @@ compilation-error-regexp-alist-alist
    '(org-bbdb org-bibtex org-docview org-gnus org-habit org-info org-irc org-mhe org-rmail org-w3m))
  '(org-refile-use-outline-path 'file)
  '(package-selected-packages
-   '(diff-hl buffer-move eglot eldoc-box slime helm-descbinds helm-descbindings mini-frame powerline auctex exec-path-from-shell astyle jupyter rainbow-mode proof-general hindent ag qml-mode racket-mode php-mode go-mode kotlin-mode nginx-mode toml-mode love-minor-mode dockerfile-mode nix-mode purescript-mode markdown-mode jinja2-mode nim-mode csharp-mode rust-mode cmake-mode clojure-mode graphviz-dot-mode lua-mode tuareg glsl-mode yaml-mode d-mode scala-mode move-text nasm-mode editorconfig tide powershell js2-mode yasnippet helm-ls-git helm-git-grep helm-cmd-t helm multiple-cursors magit haskell-mode paredit ido-completing-read+ smex gruber-darker-theme org-cliplink dash-functional dash))
+   '(which-key cdlatex latex-preview-pane diff-hl buffer-move eglot eldoc-box slime helm-descbinds helm-descbindings mini-frame powerline auctex exec-path-from-shell astyle jupyter rainbow-mode proof-general hindent ag qml-mode racket-mode php-mode go-mode kotlin-mode nginx-mode toml-mode love-minor-mode dockerfile-mode nix-mode purescript-mode markdown-mode jinja2-mode nim-mode csharp-mode rust-mode cmake-mode clojure-mode graphviz-dot-mode lua-mode tuareg glsl-mode yaml-mode d-mode scala-mode move-text nasm-mode editorconfig tide powershell js2-mode yasnippet helm-ls-git helm-git-grep helm-cmd-t helm multiple-cursors magit haskell-mode paredit ido-completing-read+ smex gruber-darker-theme org-cliplink dash-functional dash))
+ '(pdf-latex-command "pdflatex")
  '(safe-local-variable-values
    '((eval progn
            (auto-revert-mode 1)
            (rc/autopull-changes)
            (add-hook 'after-save-hook 'rc/autocommit-changes nil 'make-it-local))))
+ '(shell-escape-mode "-shell-escape")
  '(tex-start-options "--shell-escape")
  '(warning-suppress-log-types '((comp)))
  '(warning-suppress-types '((comp)))
@@ -565,3 +573,24 @@ compilation-error-regexp-alist-alist
 (add-hook 'dired-mode-hook 'diff-hl-dired-mode)
 (add-hook 'magit-pre-refresh-hook 'diff-hl-magit-pre-refresh)
 (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
+
+;;; LateX
+(rc/require 'auctex)
+(setq TeX-auto-save t)
+(setq TeX-parse-self t)
+(setq-default TeX-master nil)
+
+
+(eval-after-load "latex-preview-pane"
+  '(define-key latex-preview-pane-mode-map (kbd "M-p") nil)
+)
+
+(eval-after-load "latex-preview-pane"
+  '(define-key latex-preview-pane-mode-map (kbd "M-P") 'latex-preview-pane-update)
+)
+(rc/require 'latex-preview-pane)
+(rc/require 'cdlatex)
+(rc/require 'which-key)
+(add-hook 'LaTeX-mode-hook #'turn-on-cdlatex)   ; with AUCTeX LaTeX mode
+(add-hook 'latex-mode-hook #'turn-on-cdlatex)   ; with Emacs latex mode
+
