@@ -14,7 +14,7 @@
     settings = {
       exec-once = [
         "~/.config/waybar/launch.sh"
-        # "hyprpaper"
+        "hyprpaper"
         # "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         # "~/.config/hypr/reload-desktop-portals.sh"
       ];
