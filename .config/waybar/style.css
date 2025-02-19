@@ -215,3 +215,11 @@ window#waybar.hidden {
 	color: @font-color;
 	background: @background-color;
 }
+
+tooltip {
+   background: @secondary-color;
+}
+
+tooltip label {
+   color: @font-color;
+}

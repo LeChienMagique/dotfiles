@@ -7,7 +7,8 @@
     "margin-bottom": 5,
 
     // Choose the order of the modules
-    "modules-left": ["group/metrics"],
+    // "modules-left": ["group/metrics"],
+    "modules-left": ["temperature", "cpu", "memory", "disk"],
     "modules-center": ["clock"],
     "modules-right": ["tray", "pulseaudio", "backlight"],
 
@@ -33,25 +34,25 @@
          }
      },
 
-    "group/metrics": {
-        "orientation": "horizontal",
-        "drawer": {
-            "transition-duration": 500,
-            "transition-left-to-right": true,
-        },
-        "modules": [
-            "image#metrics",
-            "temperature",
-            "cpu",
-            "memory",
-            "disk",
-        ],
-    }, 
+    // "group/metrics": {
+    //     "orientation": "horizontal",
+    //     "drawer": {
+    //         "transition-duration": 500,
+    //         "transition-left-to-right": true,
+    //     },
+    //     "modules": [
+    //         "image#metrics",
+    //         "temperature",
+    //         "cpu",
+    //         "memory",
+    //         "disk",
+    //     ],
+    // }, 
 
-    "image#metrics": {
-        "path": "/home/lechienmagique/.config/waybar/metrics.png",
-        "size": 32,
-    },
+    // "image#metrics": {
+    //     "path": "/home/lechienmagique/.config/waybar/metrics.png",
+    //     "size": 32,
+    // },
 
     "disk": {
         "interval": 30,
@@ -174,6 +175,7 @@
      "hyprland/workspaces": {
          "format": "{icon}",
          "format-icons": {
+             // "1":"",
              "1":"",
              "2": "",
              "3": "",
