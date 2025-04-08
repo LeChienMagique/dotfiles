@@ -44,6 +44,12 @@
         # accel_profile = "flat";
       };
 
+      device = {
+        name = "logitech-g502-hero-gaming-mouse";
+        sensitivity = -0.3;
+        accel_profile = "flat";
+      };
+
       general = {
         gaps_in = 5;
         gaps_out = 5;
@@ -79,8 +85,8 @@
 
         # Some default animations, see https://wiki.hyprland.org/Configuring/Animations/ for more
 
-        bezier = "myBezier, 0.05, 0.9, 0.1, 1.05";
-        # bezier = "myBezier, 0.7, 0, 0.84, 0";
+        bezier = "myBezier, 0.05, 0.9, 0.1, 1.15";
+        # bezier = "myBezier, 0.67, 0, 1, 0.24";
 
         animation = [
           "windows, 1, 7, myBezier"
@@ -88,7 +94,7 @@
           "border, 1, 10, default"
           "borderangle, 1, 8, default"
           "fade, 1, 7, default"
-          "workspaces, 1, 1, myBezier" ];
+          "workspaces, 0, 1, myBezier" ];
       };
 
       dwindle = {
@@ -97,7 +103,12 @@
       };
       
       # master.new_is_master = true;
-      gestures.workspace_swipe = "off";
+      gestures = {
+        workspace_swipe = "yes";
+        workspace_swipe_forever = "no";
+        workspace_swipe_cancel_ratio = 0.3;
+      };
+      
       misc.force_default_wallpaper = -1;
 
       windowrulev2 = [
@@ -113,6 +124,10 @@
       bind = [
         "$mainMod SHIFT, R, exec, pkill -SIGUSR2 waybar"
         # "$mainMod SHIFT, R, exec, pkill -SIGUSR1 swaylock"
+        "$mainMod SHIFT, SPACE, exec, hyprctl switchxkblayout at-translated-set-2-keyboard next"
+        "$mainMod SHIFT, P, exec, hyprshot -m region --clipboard-only"
+        "$mainMod ALT, P, exec, hyprshot -m output --clipboard-only"
+        "$mainMod SHIFT, Z, exec, woomer"
         "$mainMod SHIFT, O, exec, swaylock"
         "$mainMod, Q, exec, kitty            "
         "$mainMod, C, killactive,            "
@@ -167,14 +182,17 @@
       bindm = [ "$mainMod, mouse:272, movewindow" "$mainMod, mouse:273, resizewindow" ];
       
       workspace = [
-        "1, monitor:DP-2, on-created-empty: emacs"
-        "2, monitor:DP-2"
-        "3, on-created-empty: google-chrome-stable"
-        "4, monitor:DP-2"
-        "5, monitor:DP-2"
-        "6, monitor:DP-2"
-        "7, monitor:DP-2"
-        "8, monitor:DP-2"
+        "1, monitor:DP-7"
+        "2, monitor:DP-7"
+        "3, monitor:DP-7, on-created-empty: firefox"
+        "4, monitor:DP-7"
+        "5, monitor:DP-7"
+        "6, monitor:DP-7"
+        "7, monitor:DP-7"
+        "8, monitor:DP-7"
+        "9, monitor:DP-7"
+        "10, monitor:DP-7"
+        "11, monitor:DP-5"
         # "10, on-created-empty: webcord"
       ];
     };
@@ -202,6 +220,19 @@
       alias ls="ll -e '^\..*$'"
       alias l="ls"
     '';
+
+    plugins = [
+      {
+        name = "zsh-nix-shell";
+        file = "nix-shell.plugin.zsh";
+        src = pkgs.fetchFromGitHub {
+          owner = "chisui";
+          repo = "zsh-nix-shell";
+          rev = "v0.8.0";
+          sha256 = "1lzrn0n4fxfcgg65v0qhnj7wnybybqzs4adz7xsrkgmcsr0ii8b7";
+        };
+      }
+    ];
     # plugins = [
     #   {
     #     name = "powerlevel10k";
@@ -210,4 +241,6 @@
     #   }
     # ];
   };
+
+  
 }
