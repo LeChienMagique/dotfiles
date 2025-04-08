@@ -2,3 +2,4 @@
 .emacs.d/smex-items
 .config/pulse
 .gitignore
+.git
