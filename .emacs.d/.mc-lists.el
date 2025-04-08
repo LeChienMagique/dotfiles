@@ -4,17 +4,24 @@
 (setq mc/cmds-to-run-for-all
       '(
         backward-sexp
+        beginning-of-visual-line
+        c-electric-colon
         c-electric-delete-forward
+        c-electric-lt-gt
         c-electric-semi&comma
         c-electric-slash
         delete-horizontal-space
         electric-newline-and-maybe-indent
         electric-pair-delete-pair
+        end-of-visual-line
+        forward-sexp
         indent-for-tab-command
         kill-region
+        kill-visual-line
         mark-sexp
         mark-word
         markdown-outdent-or-delete
+        org-self-insert-command
         paredit-delete-char
         paredit-semicolon
         smex
@@ -24,4 +31,5 @@
       '(
         backward-sentence
         markdown-cycle
+        yaml-electric-backspace
         ))

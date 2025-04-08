@@ -409,6 +409,7 @@ compilation-error-regexp-alist-alist
      ("Clean All" "(TeX-clean t)" TeX-run-function nil t :help "Delete generated intermediate and output files")
      ("Other" "" TeX-run-command t t :help "Run an arbitrary command")))
  '(TeX-view-program-selection '((output-pdf "Evince") (output-dvi "Okular")))
+ '(auth-source-save-behavior nil)
  '(browse-url-browser-function 'browse-url-generic)
  '(compilation-always-kill t)
  '(compilation-search-path nil)
@@ -432,7 +433,7 @@ compilation-error-regexp-alist-alist
    '(org-bbdb org-bibtex org-docview org-gnus org-habit org-info org-irc org-mhe org-rmail org-w3m))
  '(org-refile-use-outline-path 'file)
  '(package-selected-packages
-   '(writeroom-mode which-key cdlatex latex-preview-pane diff-hl buffer-move eglot eldoc-box slime helm-descbinds helm-descbindings mini-frame powerline auctex exec-path-from-shell astyle jupyter rainbow-mode proof-general hindent ag qml-mode racket-mode php-mode go-mode kotlin-mode nginx-mode toml-mode love-minor-mode dockerfile-mode nix-mode purescript-mode markdown-mode jinja2-mode nim-mode csharp-mode rust-mode cmake-mode clojure-mode graphviz-dot-mode lua-mode tuareg glsl-mode yaml-mode d-mode scala-mode move-text nasm-mode editorconfig tide powershell js2-mode yasnippet helm-ls-git helm-git-grep helm-cmd-t helm multiple-cursors magit haskell-mode paredit ido-completing-read+ smex gruber-darker-theme org-cliplink dash-functional dash))
+   '(qsharp-mode docker-compose-mode swift-mode htmlize gif-screencast minesweeper speed-type nyan-mode docker sublimity-scroll sublimity writeroom-mode which-key cdlatex latex-preview-pane diff-hl buffer-move eglot eldoc-box slime helm-descbinds helm-descbindings mini-frame powerline auctex exec-path-from-shell astyle jupyter rainbow-mode proof-general hindent ag qml-mode racket-mode php-mode go-mode kotlin-mode nginx-mode toml-mode love-minor-mode dockerfile-mode nix-mode purescript-mode markdown-mode jinja2-mode nim-mode csharp-mode rust-mode cmake-mode clojure-mode graphviz-dot-mode lua-mode tuareg glsl-mode yaml-mode d-mode scala-mode move-text nasm-mode editorconfig tide powershell js2-mode yasnippet helm-ls-git helm-git-grep helm-cmd-t helm multiple-cursors magit haskell-mode paredit ido-completing-read+ smex gruber-darker-theme org-cliplink dash-functional dash))
  '(pdf-latex-command "pdflatex")
  '(safe-local-variable-values
    '((eval progn
@@ -602,3 +603,33 @@ compilation-error-regexp-alist-alist
 (global-visual-line-mode t)
 
 (rc/require 'writeroom-mode)
+
+(rc/require 'docker)
+
+(rc/require 'nyan-mode)
+
+(rc/require 'minesweeper)
+(rc/require 'gif-screencast)
+
+
+;; Org-mode
+(add-hook 'org-mode-hook 'diff-hl-dired-mode)
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '(
+   (dot . t) ; this line activates dot
+   (shell . t)
+  ) 
+)
+
+(rc/require 'htmlize)
+(add-hook 'org-babel-after-execute-hook 'org-redisplay-inline-images)
+(defun my-org-confirm-babel-evaluate (lang body)
+  (not (string= lang "dot")))  ; don't ask for dot
+(setq org-confirm-babel-evaluate 'my-org-confirm-babel-evaluate)
+;; END org-mode
+
+(rc/require 'swift-mode)
+
+(rc/require 'docker-compose-mode)
+(put 'dired-find-alternate-file 'disabled nil)
