@@ -3,6 +3,7 @@
 @define-color front-color       #7CAFCB;
 @define-color secondary-color  #0D1B2A;
 
+
 * {
 	border: none;
 	border-radius: 10px;
@@ -178,7 +179,7 @@ window#waybar.hidden {
 }
 
 #workspaces button.active {
-    background-color: @front-color;
+    background-color: #9cadd6;
 }
 
 
@@ -218,6 +219,19 @@ window#waybar.hidden {
 
 tooltip {
    background: @secondary-color;
+}
+
+
+#language {
+	margin-top: 0px;
+	margin-left: 8px;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-bottom: 0px;
+	border-radius: 10px;
+	transition: none;
+	color: @font-color;
+	background: @background-color;
 }
 
 tooltip label {

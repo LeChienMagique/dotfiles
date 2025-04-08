@@ -66,7 +66,7 @@
         "interval": 30,
         "path": "/",
         "format": "{free} ",
-        "unit": "GB",
+        "unit": "GB"
     },
 
     "keyboard-state": {
@@ -98,11 +98,13 @@
 
     "cpu": {
         "format": "{usage}% ",
-        "tooltip": true
+        "tooltip": true,
+        "interval": 1
     },
 
     "memory": {
-        "format": "{}% "
+        "format": "{}% ",
+        "interval": 1
     },
 
     "temperature": {
@@ -111,7 +113,8 @@
         "critical-threshold": 80,
         // "format-critical": "{temperatureC}°C {icon}",
         "format": "{temperatureC}°C ",
-        "tooltip": true
+        "tooltip": true,
+        "interval": 1
     },
 
     "backlight": {
@@ -186,7 +189,7 @@
              // "1":"",
              "1":"",
              "2": "",
-             "3": "",
+             "3": "",
              "8": "",
              "10": ""
          }
