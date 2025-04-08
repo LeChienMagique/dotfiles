@@ -8,9 +8,14 @@ indicator
 grace-no-mouse
 grace-no-touch
 
-fade-in=0.2
+# fade-in=0.2
 
-color=424242
+# color=424242
+
+screenshots
+effect-blur=15x10
+effect-pixelate=10
+
 indicator-radius=110
 
 clock
@@ -25,15 +30,15 @@ bs-hl-color=f2c530
 indicator-thickness=5
 
 # Normal
-inside-color=424242
+inside-color=42424250
 ring-color=424242
 line-color=00000000
 separator-color=00000000
 text-color=fefefe
 
 # Clear
-ring-clear-color=424242
 inside-clear-color=424242
+ring-clear-color=ffffff
 line-clear-color=00000000
 text-clear-color=fefefe
 
@@ -41,11 +46,11 @@ text-clear-color=fefefe
 inside-ver-color=424242
 ring-ver-color=0066ff
 line-ver-color=00000000
-text-ver-color=424242
+text-ver-color=0066ff
 
 # Wrong
 inside-wrong-color=424242
 ring-wrong-color=ff0000
 line-wrong-color=00000000
-text-wrong-color=424242
+text-wrong-color=ff0000
 
