@@ -10,9 +10,17 @@
     // "modules-left": ["group/metrics"],
     "modules-left": ["temperature", "cpu", "memory", "disk"],
     "modules-center": ["clock"],
-    "modules-right": ["tray", "pulseaudio", "backlight"],
+    "modules-right": ["hyprland/language", "tray", "pulseaudio", "backlight"],
 
     // Modules configuration
+    "hyprland/language": {
+        "format": "⌨ {}",
+        "format-fr": "FR",
+        "format-en": "US",
+        "keyboard-name": "at-translated-set-2-keyboard",
+        "on-click": "hyprctl switchxkblayout at-translated-set-2-keyboard next"
+    },
+
      "clock": {
          // "timezone": "America/New_York",
          "interval": 1,
