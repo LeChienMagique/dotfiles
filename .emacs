@@ -24,6 +24,8 @@
 
 (global-unset-key (kbd "C-z"))
 
+(defalias 'yes-or-no-p 'y-or-n-p)
+
 (rc/require 'doom-themes)
 
 ;;; Whitespace mode
@@ -137,3 +139,4 @@
   (not (string= lang "dot")))  ; don't ask for dot
 (setq org-confirm-babel-evaluate 'my-org-confirm-babel-evaluate)
 ;; END org-mode
+(setq tags-revert-without-query 1)
