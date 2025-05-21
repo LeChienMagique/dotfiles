@@ -24,6 +24,8 @@
 
 (global-unset-key (kbd "C-z"))
 
+(defalias 'yes-or-no-p 'y-or-n-p)
+
 (rc/require 'doom-themes)
 
 ;;; Whitespace mode
@@ -140,3 +142,5 @@
 
 ;; (rc/require 'mini-frame)
 (put 'dired-find-alternate-file 'disabled nil)
+
+(setq tags-revert-without-query 1)

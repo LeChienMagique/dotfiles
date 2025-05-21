@@ -5,6 +5,8 @@
  ;; If there is more than one, they won't work right.
  '(LaTeX-command "latex")
  '(TeX-command "tex")
+ '(c-ts-mode-indent-offset 4)
+ '(c-ts-mode-indent-style 'gnu)
  '(compilation-always-kill t)
  '(custom-enabled-themes '(doom-challenger-deep))
  '(custom-safe-themes
