@@ -82,9 +82,9 @@
 
 ;;; Company
 (rc/require 'company)
-(require 'company)
+;; (require 'company)
 
-(global-company-mode)
+;; (global-company-mode)
 
 ;; (add-to-list 'eglot-server-programs '((c++-mode simpc-mode) "clangd"))
 
@@ -139,4 +139,8 @@
   (not (string= lang "dot")))  ; don't ask for dot
 (setq org-confirm-babel-evaluate 'my-org-confirm-babel-evaluate)
 ;; END org-mode
+
+;; (rc/require 'mini-frame)
+(put 'dired-find-alternate-file 'disabled nil)
+
 (setq tags-revert-without-query 1)
