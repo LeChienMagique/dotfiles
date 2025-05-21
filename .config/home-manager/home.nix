@@ -22,16 +22,20 @@
       monitor=[
         "eDP-1, 1920x1200, 0x0, 1"
         "DP-7, disable"
+        "DP-5, disable"
 
         # "eDP-1, disable"
+        # "HDMI-A-1, 1920x1080@60, 0x0, 1"
         # "DP-7, 2560x1440@144, 0x0, 1"
+        # "DP-5, 2560x1440@60, 2560x0, 1"
       ];
 
       "misc:focus_on_activate" = true;
       xwayland.use_nearest_neighbor = false;
 
       input = {
-        kb_layout = "us";
+        kb_layout = "us, fr";
+        # kb_variant = ", azerty";
         kb_options = "ctrl:nocaps";
         follow_mouse = 1;
 

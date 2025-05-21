@@ -91,6 +91,16 @@
                     "style": "powerline"
                 },
 
+		{
+		    "type": "python",
+                    "style": "powerline",
+                    "foreground": "p:text",
+                    "background": "p:yellow",
+                    "powerline_symbol": "\ue0b4",
+		    "display_mode": "environment",
+                    "template": "  {{ .Venv }}"
+		},
+
                 {
                     "type": "nix-shell",
                     "style": "powerline",
