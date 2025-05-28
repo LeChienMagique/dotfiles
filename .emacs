@@ -12,6 +12,7 @@
 (column-number-mode 1)
 (scroll-bar-mode 0)
 (show-paren-mode 1)
+(setq confirm-kill-emacs 'y-or-n-p)
 
 (global-set-key (kbd "C-v") 'yank)
 
@@ -113,6 +114,8 @@
 (rc/require 'clang-format)
 (add-hook 'simpc-mode-hook
           (lambda () (local-set-key (kbd "C-M-l") 'clang-format-buffer)))
+(add-hook 'c-mode-hook
+          (lambda () (local-set-key (kbd "C-M-l") 'clang-format-buffer)))
 
 (global-set-key (kbd "M-?") 'xref-find-references)
 
@@ -130,7 +133,7 @@
  '(
    (dot . t) ; this line activates dot
    (shell . t)
-  ) 
+  )
 )
 
 (rc/require 'htmlize)
@@ -143,4 +146,19 @@
 ;; (rc/require 'mini-frame)
 (put 'dired-find-alternate-file 'disabled nil)
 
+(rc/require 'ahk-mode)
+(rc/require 'wakatime-mode)
+
 (setq tags-revert-without-query 1)
+
+;; (setq dired-dwim-target t)
+(rc/require 'dired-ranger)
+(eval-after-load "dired" '(progn
+    (define-key dired-mode-map (kbd "C-x w") 'dired-ranger-copy)
+    (define-key dired-mode-map (kbd "C-x m") 'dired-ranger-move)
+    (define-key dired-mode-map (kbd "C-x c") 'dired-ranger-paste)
+    ))
+(put 'dired-find-alternate-file 'disabled nil)
+
+(rc/require 'gtags-mode)
+; (add-hook 'emacs-startup-hook #'gtags-mode)

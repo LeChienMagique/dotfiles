@@ -8,6 +8,7 @@
  '(c-ts-mode-indent-offset 4)
  '(c-ts-mode-indent-style 'gnu)
  '(compilation-always-kill t)
+ '(compilation-search-path '(nil))
  '(custom-enabled-themes '(doom-challenger-deep))
  '(custom-safe-themes
    '("cbdf8c2e1b2b5c15b34ddb5063f1b21514c7169ff20e081d39cf57ffee89bc1e"
@@ -18,30 +19,26 @@
  '(eldoc-box-clear-with-C-g t)
  '(electric-pair-mode t)
  '(global-eldoc-mode t)
+ '(global-wakatime-mode t)
+ '(global-whitespace-mode t)
  '(inhibit-startup-screen t)
  '(make-backup-files nil)
  '(org-export-backends '(ascii html icalendar latex md odt))
- '(org-export-preserve-breaks t)
  '(org-modules
-   '(org-bbdb org-bibtex org-docview org-gnus org-habit org-info org-irc
-	      org-mhe org-rmail org-w3m))
+   '(org-bbdb org-bibtex org-docview org-gnus org-habit org-info org-irc org-mhe org-rmail org-w3m))
  '(package-selected-packages
-   '(emacs-slack htmlize minesweeper nyan-mode docker writeroom-mode
-		 clang-format diff-hl eglot cypher-mode
-		 latex-preview-pane which-key cdlatex auctex company
-		 move-text graphviz-dot-mode nix-mode multiple-cursors
-		 magit simpc-mode smex ido-ubiquitous doom-themes
-		 doom-themes-theme dash-functional dash))
+   '(eglot gtags-mode dired-ranger wakatime-mode ahk-mode htmlize minesweeper nyan-mode docker writeroom-mode clang-format diff-hl cypher-mode latex-preview-pane which-key cdlatex auctex company move-text graphviz-dot-mode nix-mode multiple-cursors magit simpc-mode smex ido-ubiquitous doom-themes doom-themes-theme dash-functional dash))
  '(pdf-latex-command "pdflatex")
  '(ring-bell-function 'ignore)
  '(shell-escape-mode "-shell-escape")
  '(tex-start-options "--shell-escape")
  '(visible-bell t)
- '(warning-suppress-log-types '((native-compiler) (comp)))
+ '(wakatime-api-key "")
+ '(wakatime-cli-path "wakatime-cli")
+ '(warning-suppress-log-types '((comp)))
  '(warning-suppress-types '((comp)))
  '(whitespace-style
-   '(face tabs spaces trailing space-before-tab newline indentation empty
-	  space-after-tab space-mark tab-mark))
+   '(face tabs spaces trailing space-before-tab newline indentation empty space-after-tab space-mark tab-mark))
  '(writeroom-fullscreen-effect 'maximized)
  '(writeroom-global-effects
    '(writeroom-set-alpha writeroom-set-menu-bar-lines

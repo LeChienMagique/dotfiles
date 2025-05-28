@@ -215,8 +215,8 @@
     };
 
     initExtra = ''
-        eval "$(oh-my-posh init zsh)"
-        eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/catppuccin.omp.json)"
+      eval "$(oh-my-posh init zsh)"
+      eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/catppuccin.omp.json)"
       # eval "$(zoxide init --cmd cd zsh)"
       # export BAT_THEME="TwoDark"
       # export PLS_CONFIG="~/.config/pls/pls.yml"
