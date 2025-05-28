@@ -27,7 +27,7 @@
  '(org-modules
    '(org-bbdb org-bibtex org-docview org-gnus org-habit org-info org-irc org-mhe org-rmail org-w3m))
  '(package-selected-packages
-   '(eglot gtags-mode dired-ranger wakatime-mode ahk-mode htmlize minesweeper nyan-mode docker writeroom-mode clang-format diff-hl cypher-mode latex-preview-pane which-key cdlatex auctex company move-text graphviz-dot-mode nix-mode multiple-cursors magit simpc-mode smex ido-ubiquitous doom-themes doom-themes-theme dash-functional dash))
+   '(fzf eglot gtags-mode dired-ranger wakatime-mode ahk-mode htmlize minesweeper nyan-mode docker writeroom-mode clang-format diff-hl cypher-mode latex-preview-pane which-key cdlatex auctex company move-text graphviz-dot-mode nix-mode multiple-cursors magit simpc-mode smex ido-ubiquitous doom-themes doom-themes-theme dash-functional dash))
  '(pdf-latex-command "pdflatex")
  '(ring-bell-function 'ignore)
  '(shell-escape-mode "-shell-escape")
