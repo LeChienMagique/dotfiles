@@ -151,6 +151,9 @@
 
 (setq tags-revert-without-query 1)
 
+(rc/require 'pg)
+(load-file "~/.emacs.local/pgmacs.el")
+
 ;; (setq dired-dwim-target t)
 (rc/require 'dired-ranger)
 (eval-after-load "dired" '(progn
