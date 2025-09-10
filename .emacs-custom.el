@@ -30,7 +30,7 @@
  '(org-bbdb org-bibtex org-docview org-gnus org-habit org-info org-irc
             org-mhe org-rmail org-w3m))
  '(package-selected-packages
-   '(fzf eglot gtags-mode dired-ranger wakatime-mode ahk-mode htmlize minesweeper nyan-mode docker writeroom-mode clang-format diff-hl cypher-mode latex-preview-pane which-key cdlatex auctex company move-text graphviz-dot-mode nix-mode multiple-cursors magit simpc-mode smex ido-ubiquitous doom-themes doom-themes-theme dash-functional dash))
+   '(ahk-mode auctex cdlatex clang-format company cypher-mode dash dash-functional diff-hl dired-ranger docker doom-themes doom-themes-theme eglot emacs-slack fzf graphviz-dot-mode gtags-mode htmlize ido-ubiquitous latex-preview-pane magit minesweeper move-text multiple-cursors nix-mode nyan-mode simpc-mode smex which-key writeroom-mode))
  '(pdf-latex-command "pdflatex")
  '(ring-bell-function 'ignore)
  '(shell-escape-mode "-shell-escape")
