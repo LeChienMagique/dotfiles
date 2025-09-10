@@ -1,5 +1,15 @@
 .emacs.d/ido.last
 .emacs.d/smex-items
+.emacs.d/elpa
+.emacs.d/transient
+# .emacs.rc
+# .emacs.snippets
+
 .config/pulse
+.config/hypr
+.config/home-manager
+.config/waybar
+.config/swaylock
+
 .gitignore
 .git

@@ -21,16 +21,20 @@
       monitor=[
         "eDP-1, 1920x1200, 0x0, 1"
         "DP-7, disable"
+        "DP-5, disable"
 
         # "eDP-1, disable"
+        # "HDMI-A-1, 1920x1080@60, 0x0, 1"
         # "DP-7, 2560x1440@144, 0x0, 1"
+        # "DP-5, 2560x1440@60, 2560x0, 1"
       ];
 
       "misc:focus_on_activate" = true;
       xwayland.use_nearest_neighbor = false;
 
       input = {
-        kb_layout = "us";
+        kb_layout = "us, fr";
+        # kb_variant = ", azerty";
         kb_options = "ctrl:nocaps";
         follow_mouse = 1;
 
@@ -124,17 +128,19 @@
         "$mainMod SHIFT, R, exec, pkill -SIGUSR2 waybar"
         # "$mainMod SHIFT, R, exec, pkill -SIGUSR1 swaylock"
         "$mainMod SHIFT, SPACE, exec, hyprctl switchxkblayout at-translated-set-2-keyboard next"
-        "$mainMod SHIFT, P, exec, hyprshot -m region --clipboard-only"
-        "$mainMod ALT, P, exec, hyprshot -m output --clipboard-only"
+        "$mainMod SHIFT, P, exec, $HOME/.config/rofi/applets/bin/screenshot.sh"
+        # "$mainMod SHIFT, P, exec, hyprshot -m region --clipboard-only"
+        # "$mainMod ALT, P, exec, hyprshot -m output --clipboard-only"
         "$mainMod SHIFT, Z, exec, woomer"
+        "$mainMod, O, exec, $HOME/.config/rofi/powermenu/type-1/powermenu.sh"
         "$mainMod SHIFT, O, exec, swaylock"
         "$mainMod, Q, exec, kitty            "
         "$mainMod, C, killactive,            "
         "$mainMod, M, exit,                  "
         "$mainMod, E, exec, dolphin          "
         "$mainMod, V, togglefloating,        "
-        "$mainMod, D, exec, rofi -show drun "
-        "$mainMod SHIFT, D, exec, rofi -show run "
+        "$mainMod, D, exec, $HOME/.config/rofi/scripts/launcher_t1"
+        # "$mainMod SHIFT, D, exec, rofi -show run"
         "$mainMod, P, pseudo, # dwindle      "
         "$mainMod, J, togglesplit, # dwindle "
         "$mainMod, left, movefocus, l                     "
@@ -210,8 +216,8 @@
     };
 
     initExtra = ''
-        eval "$(oh-my-posh init zsh)"
-        eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/catppuccin.omp.json)"
+      eval "$(oh-my-posh init zsh)"
+      eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/catppuccin.omp.json)"
       # eval "$(zoxide init --cmd cd zsh)"
       # export BAT_THEME="TwoDark"
       # export PLS_CONFIG="~/.config/pls/pls.yml"
