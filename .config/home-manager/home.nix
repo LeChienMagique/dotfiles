@@ -1,6 +1,5 @@
 { pkgs, lib, config, inputs, ...}:
 {
-
   home.stateVersion = "24.11";
   home.username = "lechienmagique";
   home.homeDirectory = "/home/lechienmagique";
@@ -40,7 +39,7 @@
           scroll_factor = 0.5;
         };
 
-        sensitivity = 0;
+        sensitivity = 0.3;
         # accel_profile = "flat";
       };
 
@@ -101,14 +100,14 @@
         pseudotile = "yes";
         preserve_split = "yes";
       };
-      
+
       # master.new_is_master = true;
       gestures = {
         workspace_swipe = "yes";
         workspace_swipe_forever = "no";
         workspace_swipe_cancel_ratio = 0.3;
       };
-      
+
       misc.force_default_wallpaper = -1;
 
       windowrulev2 = [
@@ -180,7 +179,7 @@
         "CTRL ,XF86AudioRaiseVolume,exec,amixer set Master 1%+ unmute"
       ];
       bindm = [ "$mainMod, mouse:272, movewindow" "$mainMod, mouse:273, resizewindow" ];
-      
+
       workspace = [
         "1, monitor:DP-7"
         "2, monitor:DP-7"
@@ -242,5 +241,5 @@
     # ];
   };
 
-  
+
 }
