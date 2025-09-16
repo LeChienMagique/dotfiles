@@ -138,9 +138,12 @@
         "$mainMod, C, killactive,            "
         "$mainMod, M, exit,                  "
         "$mainMod, E, exec, dolphin          "
+        "$mainMod SHIFT, F, fullscreen"
         "$mainMod, V, togglefloating,        "
         "$mainMod, D, exec, $HOME/.config/rofi/scripts/launcher_t1"
         # "$mainMod SHIFT, D, exec, rofi -show run"
+        "$mainMod CTRL, L, exec, $HOME/.config/toggle_key_leds.sh               "
+        "$mainMod CTRL SHIFT, L, exec, $HOME/.config/toggle_key_leds.sh 0      "
         "$mainMod, P, pseudo, # dwindle      "
         "$mainMod, J, togglesplit, # dwindle "
         "$mainMod, left, movefocus, l                     "
@@ -224,6 +227,7 @@
       alias ll="pls -d perm -d user -d size -d mtime"
       alias ls="ll -e '^\..*$'"
       alias l="ls"
+      alias nd='nix develop -c $SHELL'
     '';
 
     plugins = [
