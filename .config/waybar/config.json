@@ -1,10 +1,10 @@
 [{
     "layer": "top",
     "position": "top",
-    "height": 35,
+    "height": 0,
     "spacing": 4,
-    "margin-top": 5,
-    "margin-bottom": 5,
+    "margin-top": 0,
+    "margin-bottom": 0,
 
     // Choose the order of the modules
     // "modules-left": ["group/metrics"],
@@ -55,7 +55,7 @@
     //         "memory",
     //         "disk",
     //     ],
-    // }, 
+    // },
 
     // "image#metrics": {
     //     "path": "/home/lechienmagique/.config/waybar/metrics.png",
@@ -171,10 +171,10 @@
  {
      "layer": "top",
      "position": "bottom",
-     "height": 35,
+     "height": 0,
      "spacing": 4,
-     "margin-top": 5,
-     "margin-bottom": 10,
+     "margin-top": 0,
+     "margin-bottom": 0,
 
      // Choose the order of the modules
      "modules-left": ["hyprland/window"],
@@ -226,6 +226,6 @@
         "separate-outputs": true,
         "icon": true,
     },
-     
+
  }
 ]

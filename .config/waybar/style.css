@@ -1,84 +1,112 @@
-@define-color background-color #273654;
+@define-color background-color #192236;
+@define-color widget-background-color #192236;
+/* @define-color widget-background-color #273654; */
 @define-color font-color      #EAEAEA;
 @define-color front-color       #7CAFCB;
 @define-color secondary-color  #0D1B2A;
 
-
-* {
-	border: none;
-	border-radius: 10px;
-    font-family: "JetbrainsMono Nerd Font" ;
-	font-size: 15px;
-	min-height: 10px;
-    background: transparent;
+@keyframes waves {
+    to {
+	background-position: 2000% 0%, 2500% 0%, 3000% 0%;
+    }
 }
 
-window#waybar.top {
-	/* background-color: @secondary-color; */
-	background-color: transparent;
+@keyframes big-waves {
+    to {
+	background-position: 2000px 0%, 2500px 0%, 3000px 0%;
+    }
+}
+
+* {
+    border: none;
+    border-radius: 4px;
+    font-family: "JetbrainsMono Nerd Font" ;
+    font-size: 14px;
+    min-height: 16px;
+    background-color: transparent;
+}
+
+/* box.module { */
+/*     border: 2px solid green; */
+/* } */
+
+label.module {
+    border-radius: 0px;
+
+    min-width: 64px;
+    /* border-left: 2px solid white; */
+    /* border-right: 2px solid white; */
+
+    padding: 4px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+
+    /* margin-left: 0px; */
+    /* padding-left: 0px; */
+    /* padding-right: 0px; */
+    /* font-size: 25px; */
+}
+
+window#waybar {
+    /* background-color: @secondary-color; */
+    /* background-color: transparent; */
+    /* background-color: @background-color; */
+    /* background-image: url("wave1.svg"), url("wave2.svg"), url("wave3.svg"); */
+    background-color: @background-color;
+
+    /* background-repeat: repeat-x; */
+    /* background-size: cover; */
+    /* background-position: -500px -10%, 0px 0%, 500px -20%; */
+    /* animation: big-waves 100s linear infinite forwards; */
 }
 
 window#waybar.hidden {
-	opacity: 0.2;
+    opacity: 0.2;
 }
 
 #window {
-	margin-top: 0px;
-	margin-left: 8px;
-	margin-bottom: 0px;
-	padding-left: 10px;
-	padding-right: 10px;
+    padding: 4px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    margin-top: 0px;
+    margin-bottom: 0px;
 
-	border-radius: 10px;
-	transition: none;
-	color: @font-color;
-	background-color: @background-color;
+    transition: none;
+    color: @font-color;
+    background-color: @widget-background-color;
 }
 
 #network {
-	margin-top: 0px;
-	margin-left: 8px;
-	padding-left: 10px;
-	padding-right: 10px;
-	margin-bottom: 0px;
-	border-radius: 10px;
-	transition: none;
-	color: @font-color;
-	background: @background-color;
+
+    transition: none;
+    color: @font-color;
+    background: @widget-background-color;
 }
 
 #pulseaudio {
-	margin-top: 0px;
-	margin-left: 8px;
-	padding-left: 10px;
-	padding-right: 10px;
-	margin-bottom: 0px;
-	border-radius: 10px;
-	transition: none;
-   	color: @font-color;
-	background: @background-color;
+
+    transition: none;
+    color: @font-color;
+    background: @widget-background-color;
 }
 
 #battery {
-	margin-top: 0px;
-	margin-left: 8px;
-	padding-left: 10px;
-	padding-right: 10px;
-	margin-bottom: 0px;
-	border-radius: 10px;
-	transition: none;
-	color: @font-color;
-	background: @background-color;
+
+    transition: none;
+    color: @font-color;
+    background: @widget-background-color;
 }
 
 #battery.charging, #battery.plugged {
-	color: @font-color;
-    background-color: @background-color;
+    color: @font-color;
+    background-color: @widget-background-color;
 }
 
 #battery.critical:not(.charging) {
-    background-color: @background-color;
-   	color: @font-color;
+    background-color: @widget-background-color;
+    color: @font-color;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: linear;
@@ -88,152 +116,98 @@ window#waybar.hidden {
 
 @keyframes blink {
     to {
-        background-color: @background-color;
-       	color: @font-color;
+        background-color: @widget-background-color;
+        color: @font-color;
     }
 }
 
 #backlight {
-	margin-top: 0px;
-	margin-left: 8px;
-	padding-left: 10px;
-	padding-right: 10px;
-	margin-bottom: 0px;
-	border-radius: 10px;
-	transition: none;
-	color: @font-color;
-	background: @background-color;
+
+    transition: none;
+    color: @font-color;
+    background: @widget-background-color;
 }
 
 #clock {
-	margin-top: 0px;
-	margin-left: 8px;
-	padding-left: 10px;
-	padding-right: 10px;
-	margin-bottom: 0px;
-	border-radius: 10px;
-	transition: none;
-	color: @font-color;
-	background: @background-color;
+    transition: none;
+    color: @font-color;
+    /* background: @widget-background-color; */
 }
 
 #memory {
-	margin-top: 0px;
-	margin-left: 8px;
-	padding-left: 10px;
-	margin-bottom: 0px;
-	padding-right: 10px;
-	border-radius: 10px;
-	transition: none;
-	color: @font-color;
-	background: @background-color;
+
+    transition: none;
+    color: @font-color;
+    background: @widget-background-color;
 }
 
 #cpu {
-	margin-top: 0px;
-	margin-left: 8px;
-	padding-left: 10px;
-	margin-bottom: 0px;
-	padding-right: 10px;
-	border-radius: 10px;
-	transition: none;
-	color: @font-color;
-	background: @background-color;
+
+    transition: none;
+    color: @font-color;
+    background: @widget-background-color;
 }
 
 #temperature {
-	margin-top: 0px;
-	margin-left: 8px;
-	padding-left: 10px;
-	margin-bottom: 0px;
-	padding-right: 10px;
-	border-radius: 10px;
-	transition: none;
-	color: @font-color;
-	background: @background-color;
+
+    transition: none;
+    color: @font-color;
+    background: @widget-background-color;
 }
 
 #tray {
-	margin-top: 0px;
-	margin-left: 8px;
-	padding-left: 10px;
-	margin-bottom: 0px;
-	padding-right: 10px;
-	border-radius: 10px;
-	transition: none;
-	color: @font-color;
-	background: @background-color;
+
+    transition: none;
+    color: @font-color;
+    background: @widget-background-color;
 }
 
 #workspaces {
     background-image: url("wave1.svg"), url("wave2.svg"), url("wave3.svg");
-    background-color: @background-color;
+    background-color: @widget-background-color;
     background-repeat: repeat-x;
     background-size: cover;
     background-position: 0% -10%, 500% 0%, 1000% -20%;
-    animation: waves 100s linear infinite forwards;
+    animation: waves 30s linear infinite forwards;
 }
 
 #workspaces button {
-   	color: @font-color;
+    color: @font-color;
 }
 
 #workspaces button.active {
     background-color: #9cadd6;
 }
 
-
-@keyframes waves {
-  to {
-      background-position: 2000% 0%, 2500% 0%, 3000% 0%;
-  }
-}
-
 #workspaces.active {
-	background: @background-color;
+    background: @widget-background-color;
 }
 
 #disk {
-	margin-top: 0px;
-	margin-left: 8px;
-	padding-left: 10px;
-	padding-right: 10px;
-	margin-bottom: 0px;
-	border-radius: 10px;
-	transition: none;
-	color: @font-color;
-	background: @background-color;
+    transition: none;
+    color: @font-color;
+    background: @widget-background-color;
 }
 
 #image {
-	margin-top: 0px;
-	margin-left: 8px;
-	padding-left: 10px;
-	padding-right: 10px;
-	margin-bottom: 0px;
-	border-radius: 10px;
-	transition: none;
-	color: @font-color;
-	background: @background-color;
+
+    transition: none;
+    color: @font-color;
+    background: @widget-background-color;
 }
 
 tooltip {
-   background: @secondary-color;
+    background: @secondary-color;
 }
 
 
 #language {
-	margin-top: 0px;
-	margin-left: 8px;
-	padding-left: 10px;
-	padding-right: 10px;
-	margin-bottom: 0px;
-	border-radius: 10px;
-	transition: none;
-	color: @font-color;
-	background: @background-color;
+
+    transition: none;
+    color: @font-color;
+    background: @widget-background-color;
 }
 
 tooltip label {
-   color: @font-color;
+    color: @font-color;
 }
